@@ -1,0 +1,337 @@
+@import "tailwindcss";
+
+/* ============================================================
+   HOLIDAY SKY LOUNGE 新宿 — Design tokens
+   基準色はロゴから抽出:  緑 #185830 / 太陽オレンジ #F89820
+   配色比率: 白・アイボリー 70% / 緑 20% / チャコール・ブラウン 10%
+   ============================================================ */
+@theme {
+  --color-brand: #185830;
+  --color-brand-deep: #0e3a1e;
+  --color-brand-mid: #2b6f42;
+  --color-brand-soft: #e4ede6;
+  --color-brand-tint: #f2f7f3;
+
+  --color-sun: #f89820;
+  --color-gold: #d99b28;
+
+  --color-ivory: #fbf9f4;
+  --color-ivory-deep: #f4f0e6;
+  --color-charcoal: #23211d;
+  --color-ember: #14120f;
+  --color-woodbrown: #5c4632;
+
+  --color-ink: #1e1c19;
+  --color-ink-soft: #56514a;
+  --color-line: #e2ddd2;
+
+  --font-display: var(--font-cormorant), "Hiragino Mincho ProN", "Yu Mincho",
+    "YuMincho", "Noto Serif JP", serif;
+  --font-mincho: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho",
+    "Noto Serif JP", "Shippori Mincho", serif;
+  --font-sans: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic",
+    "Yu Gothic", "YuGothic", "Noto Sans JP", "Meiryo", system-ui, sans-serif;
+
+  --ease-holiday: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+    scroll-behavior: smooth;
+    /* 固定CTAぶんの余白（モバイル） */
+    --cta-height: 68px;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-padding-top: 84px;
+  }
+
+  body {
+    background-color: var(--color-ivory);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "palt" 1;
+    letter-spacing: 0.02em;
+    line-height: 1.9;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: var(--color-brand);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-mincho);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+    text-wrap: pretty;
+    /* 日本語見出しを文節単位で折り返す（対応ブラウザのみ） */
+    word-break: auto-phrase;
+    line-break: strict;
+  }
+
+  img,
+  video {
+    max-width: 100%;
+  }
+}
+
+@layer components {
+  /* ---------- Typography helpers ---------- */
+  .u-en {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: 0.16em;
+  }
+
+  .u-eyebrow {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .u-vertical-rule::before {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 3.5rem;
+    margin-bottom: 1.75rem;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      var(--color-brand) 35%,
+      var(--color-brand)
+    );
+  }
+
+  /* ---------- Reveal animation ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translate3d(0, 26px, 0);
+    transition:
+      opacity 0.9s var(--ease-holiday),
+      transform 0.9s var(--ease-holiday);
+    will-change: opacity, transform;
+  }
+  .reveal[data-visible="true"] {
+    opacity: 1;
+    transform: none;
+  }
+
+  .reveal-clip {
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path 1.15s var(--ease-holiday);
+    will-change: clip-path;
+  }
+  .reveal-clip[data-visible="true"] {
+    clip-path: inset(0 0 0 0);
+  }
+
+  .reveal-zoom img {
+    transform: scale(1.08);
+    transition: transform 1.6s var(--ease-holiday);
+  }
+  .reveal-zoom[data-visible="true"] img {
+    transform: scale(1);
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: 48px;
+    padding: 0.85rem 1.9rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    border-radius: 2px;
+    transition:
+      background-color 0.35s var(--ease-holiday),
+      color 0.35s var(--ease-holiday),
+      border-color 0.35s var(--ease-holiday),
+      transform 0.35s var(--ease-holiday);
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+  .btn-primary {
+    background-color: var(--color-brand);
+    color: #fff;
+  }
+  .btn-primary:hover {
+    background-color: var(--color-brand-deep);
+  }
+  .btn-outline {
+    border: 1px solid currentColor;
+    color: var(--color-brand);
+    background-color: transparent;
+  }
+  .btn-outline:hover {
+    background-color: var(--color-brand);
+    color: #fff;
+    border-color: var(--color-brand);
+  }
+  .btn-ghost-light {
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    color: #fff;
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+  }
+  .btn-ghost-light:hover {
+    background-color: #fff;
+    color: var(--color-brand-deep);
+    border-color: #fff;
+  }
+
+  /* ---------- Decorative ---------- */
+  .rule-sun {
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      var(--color-brand),
+      var(--color-sun) 55%,
+      transparent
+    );
+  }
+
+  .paper {
+    background-color: var(--color-ivory);
+    background-image: radial-gradient(
+      rgba(24, 88, 48, 0.045) 1px,
+      transparent 1px
+    );
+    background-size: 22px 22px;
+  }
+
+  .text-shadow-hero {
+    text-shadow: 0 2px 30px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.35);
+  }
+
+  /* ---------- Hero ---------- */
+  .hero-zoom {
+    animation: hero-zoom 22s var(--ease-holiday) forwards;
+  }
+  @keyframes hero-zoom {
+    from {
+      transform: scale(1.1);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
+  .scroll-line::after {
+    content: "";
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 1px;
+    height: 100%;
+    background-color: #fff;
+    transform-origin: top;
+    animation: scroll-line 2.4s ease-in-out infinite;
+  }
+  @keyframes scroll-line {
+    0% {
+      transform: scaleY(0);
+      transform-origin: top;
+    }
+    45% {
+      transform: scaleY(1);
+      transform-origin: top;
+    }
+    55% {
+      transform: scaleY(1);
+      transform-origin: bottom;
+    }
+    100% {
+      transform: scaleY(0);
+      transform-origin: bottom;
+    }
+  }
+
+  /* 横スクロールレール */
+  .rail {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .rail::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer utilities {
+  .container-wide {
+    width: 100%;
+    max-width: 88rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .container-wide {
+      padding-inline: 2.5rem;
+    }
+  }
+  @media (min-width: 1280px) {
+    .container-wide {
+      padding-inline: 4rem;
+    }
+  }
+
+  /* 画面外セクションのレイアウト/描画をスキップし、長いページの負荷を下げる */
+  .cv-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 900px;
+  }
+
+  .container-read {
+    width: 100%;
+    max-width: 46rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    scroll-behavior: auto;
+  }
+  .reveal,
+  .reveal-clip,
+  .reveal-zoom img {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    transition: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
