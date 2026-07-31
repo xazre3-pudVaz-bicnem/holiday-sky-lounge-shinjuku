@@ -9,6 +9,7 @@ import { JsonLd } from "@/components/ui/JsonLd";
 import { breadcrumbJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/seo";
 import { ArrowIcon } from "@/components/ui/Icons";
+import { PHOTO_NOTE } from "@/data/courses";
 
 const CRUMBS = [
   { name: "ホーム", path: "/" },
@@ -20,7 +21,7 @@ export const metadata = buildMetadata({
   description:
     "新宿の屋上ビアガーデン「HOLIDAY SKY LOUNGE 新宿」の料理とドリンク。ブラックアンガス牛のリブ・ランプ・ハラミ、サムギョプサル、シュラスコ、ガーリックシュリンプなどの手ぶらBBQと、生ビール・ボトルビール・カクテルが選べる飲み放題をご紹介します。",
   path: "/food-drink",
-  image: "/images/cocktails-lineup.jpg",
+  image: "/images/churrasco-carving.jpg",
   keywords: ["新宿 BBQ", "新宿 飲み放題", "新宿 ビアガーデン 料理", "新宿 バーベキュー", "新宿 昼飲み"],
 });
 
@@ -113,8 +114,8 @@ export default function FoodDrinkPage() {
         en="Food & Drink"
         title="火を囲み、焼きたてを頬張る。"
         lead="下ごしらえを済ませた食材が、焼くだけの状態で運ばれてきます。網にのせて、脂がはぜる音を聞きながら数分。焼きたてをそのまま口へ運ぶ、それがいちばんおいしい食べ方です。"
-        image="/images/bbq-grill-table-day.jpg"
-        alt="新宿の屋上ビアガーデンの席にセットされた手ぶらBBQ用のグリル"
+        image="/images/churrasco-carving.jpg"
+        alt="目の前で焼きたての肉をカットする、新宿の屋上ビアガーデンのシュラスコBBQ"
       />
 
       <div className="bg-ivory pb-4">
@@ -135,16 +136,19 @@ export default function FoodDrinkPage() {
                 焼く音まで、ごちそう。
               </SectionHeading>
               <Reveal delay={200}>
-                <div className="reveal-zoom relative mt-12 aspect-[3/4] overflow-hidden">
+                <div className="reveal-zoom relative mt-12 aspect-[4/3] overflow-hidden">
                   <Image
-                    src="/images/terrace-grill-table-day.jpg"
-                    alt="新宿の屋上ビアガーデンでBBQを楽しめるグリル付きテーブル席"
+                    src="/images/bbq-steak-pork-platter.jpg"
+                    alt="新宿の屋上ビアガーデンで焼き上げたステーキと厚切り豚バラ、グリル野菜の盛り合わせ"
                     fill
                     loading="lazy"
                     sizes="(max-width: 1024px) 100vw, 40vw"
                     className="object-cover"
                   />
                 </div>
+              </Reveal>
+              <Reveal delay={240}>
+                <p className="mt-4 text-[0.72rem] text-ink-soft">{PHOTO_NOTE}</p>
               </Reveal>
             </div>
 
@@ -187,10 +191,10 @@ export default function FoodDrinkPage() {
               </div>
             </div>
             <Reveal variant="clip" className="lg:col-span-5 lg:order-1">
-              <div className="reveal-zoom relative aspect-[4/3] overflow-hidden lg:aspect-[3/4]">
+              <div className="reveal-zoom relative aspect-[4/3] overflow-hidden">
                 <Image
-                  src="/images/bbq-long-table-grill.jpg"
-                  alt="新宿の屋上ビアガーデンでBBQを囲むロングテーブルとグリル"
+                  src="/images/bbq-mixed-grill-platter.jpg"
+                  alt="新宿の屋上ビアガーデンの海鮮とグリル野菜、チキンやソーセージを盛り合わせたBBQプレート"
                   fill
                   loading="lazy"
                   sizes="(max-width: 1024px) 100vw, 40vw"
@@ -245,6 +249,7 @@ export default function FoodDrinkPage() {
 
           <Reveal>
             <p className="mt-14 max-w-3xl border-l-2 border-brand/40 pl-5 text-[0.8rem] leading-[1.95] text-ink-soft">
+              {PHOTO_NOTE}
               料理・ドリンクの内容はコースおよび時期により変わります。最新のコース内容と料金は予約ページをご確認ください。
             </p>
           </Reveal>

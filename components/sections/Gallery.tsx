@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import Reveal from "@/components/ui/Reveal";
 import { GALLERY } from "@/data/content";
+import { PHOTO_NOTE } from "@/data/courses";
 
 /** Masonry用の高さパターン（単調な正方形グリッドを避ける） */
 const SPAN = ["aspect-[3/4]", "aspect-[4/3]", "aspect-[1/1]", "aspect-[3/2]", "aspect-[4/5]"];
@@ -91,6 +92,7 @@ export default function Gallery() {
           <Reveal delay={140}>
             <p className="text-[0.78rem] text-ink-soft">
               画像をタップすると拡大表示できます。
+              <span className="mt-1 block text-[0.72rem]">{PHOTO_NOTE}</span>
             </p>
           </Reveal>
         </div>

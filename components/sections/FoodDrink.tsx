@@ -3,6 +3,7 @@ import Link from "next/link";
 import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { ArrowIcon } from "@/components/ui/Icons";
+import { PHOTO_NOTE } from "@/data/courses";
 
 const GRILL = [
   { name: "ブラックアンガス牛", note: "リブ・ランプ・ハラミ" },
@@ -49,14 +50,17 @@ export default function FoodDrink() {
             <Reveal delay={200}>
               <div className="reveal-zoom relative mt-12 aspect-[4/5] overflow-hidden">
                 <Image
-                  src="/images/bbq-grill-table-day.jpg"
-                  alt="新宿の屋上ビアガーデンの席にセットされた手ぶらBBQ用のグリルとテーブル"
+                  src="/images/charcoal-grilled-steak.jpg"
+                  alt="炭火のグリルで焼き上げる、新宿の屋上ビアガーデンのステーキ"
                   fill
                   loading="lazy"
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"
                 />
               </div>
+            </Reveal>
+            <Reveal delay={240}>
+              <p className="mt-4 text-[0.72rem] text-ink-soft">{PHOTO_NOTE}</p>
             </Reveal>
           </div>
 

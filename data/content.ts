@@ -90,8 +90,8 @@ export const SCENES: Scene[] = [
     label: "友人との飲み会",
     title: "焼きながら、ずっと喋っていられる",
     body: "料理が運ばれてくるのを待つ時間がありません。網の上で肉が焼ける音と匂いを囲みながら、そのまま喋り続けられるのがBBQのいいところです。屋外なので声のボリュームを気にしなくてよく、いつのまにか終電まで居座ってしまう。ラストオーダーはフード23:15、ドリンク23:30です。",
-    image: "/images/cheers-beer-glass.jpg",
-    alt: "新宿の屋上ビアガーデンで友人同士がビールで乾杯する様子",
+    image: "/images/korean-bbq-table-beer.jpg",
+    alt: "新宿の屋上ビアガーデンで友人と囲む、焼きたての肉とビールが並んだBBQのテーブル",
   },
   {
     id: "birthday",
@@ -194,12 +194,14 @@ export const STEPS = [
 
 export const GALLERY = [
   { src: "/images/terrace-blue-hour-wide.jpg", alt: "新宿の屋上ビアガーデンのブルーアワーに染まるルーフトップテラス全景" },
+  { src: "/images/grill-steak-sausage-platter.jpg", alt: "新宿の屋上ビアガーデンで焼き上げたステーキとソーセージ、グリル野菜の盛り合わせ" },
   { src: "/images/cheers-corona-night.jpg", alt: "新宿の屋上ビアガーデンの夜、ボトルビールで乾杯する手元" },
   { src: "/images/terrace-day-palm-umbrella.jpg", alt: "青空とパラソル、ヤシの木が並ぶ昼間の新宿の屋上ビアガーデン" },
   { src: "/images/cocktails-row-fence.jpg", alt: "新宿の屋上ビアガーデンで提供されるカクテル6種が並ぶテーブル" },
   { src: "/images/terrace-night-string-lights.jpg", alt: "ガーランドライトが灯る新宿の屋上ビアガーデンの夜のテラス席" },
   { src: "/images/tiki-bar-counter.jpg", alt: "南国リゾート風の茅葺き屋根が印象的な新宿の屋上ビアガーデンのバーカウンター" },
   { src: "/images/terrace-sunset-tables.jpg", alt: "夕焼けに染まる新宿の屋上ビアガーデンのテーブル席" },
+  { src: "/images/samgyeopsal-set.jpg", alt: "新宿の屋上ビアガーデンの韓国BBQ、サムギョプサルとサンチュ・キムチのセット" },
   { src: "/images/corona-ice-bucket.jpg", alt: "氷の入ったバケツで冷やされたボトルビール" },
   { src: "/images/terrace-umbrella-day.jpg", alt: "パラソルの下でくつろげる新宿の屋上ビアガーデンの昼のテラス席" },
   { src: "/images/terrace-dusk-rows.jpg", alt: "日没後の新宿の街を背景にしたビアガーデンのテーブル列" },

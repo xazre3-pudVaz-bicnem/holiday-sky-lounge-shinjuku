@@ -32,8 +32,8 @@ export const COURSES: Course[] = [
     drinkMinutes: 120,
     lead: "初めての方にいちばん選ばれている定番コース。ブラックアンガスランプ、BBQポーク、ソーセージ、チキンに、ガーリックシュリンプと焼きイカの海鮮まで。肉も海鮮も一度に楽しめます。",
     points: ["ブラックアンガスランプ", "BBQポーク・チキン・ソーセージ", "ガーリックシュリンプ／焼きイカ"],
-    image: "/images/bbq-long-table-grill.jpg",
-    alt: "新宿の屋上ビアガーデンでスタンダードBBQコースを楽しむロングテーブルとグリル",
+    image: "/images/bbq-meat-seafood-grill.jpg",
+    alt: "新宿の屋上ビアガーデンのスタンダードBBQコース、肉とホタテ・海老など海鮮を焼き上げた鉄板",
     featured: true,
   },
   {
@@ -47,8 +47,8 @@ export const COURSES: Course[] = [
     drinkMinutes: 120,
     lead: "新大久保のすぐ隣という土地柄を活かした韓国スタイル。厚切りサムギョプサルを鉄板でじっくり焼き上げ、夜景を眺めながら韓国BBQを囲みます。女子会でよく選ばれる16品構成。",
     points: ["厚切りサムギョプサル", "韓国スタイルのBBQプレート", "全16品・2時間飲み放題付"],
-    image: "/images/terrace-grill-table-day.jpg",
-    alt: "新宿の屋上ビアガーデンで韓国BBQサムギョプサルコースを楽しめるグリル付きテーブル席",
+    image: "/images/korean-bbq-samgyeopsal-griddle.jpg",
+    alt: "新宿の屋上ビアガーデンの韓国BBQコース、鉄板で焼く厚切りサムギョプサルとキムチ",
   },
   {
     id: "american",
@@ -61,8 +61,8 @@ export const COURSES: Course[] = [
     drinkMinutes: 150,
     lead: "リブ・ランプ・ハラミ。ブラックアンガス牛を3種類まとめて焼き上げる、いちばん肉を食べたい日のコース。スモークポークやスパイシーチキンも並ぶデカ盛りグリルです。",
     points: ["ブラックアンガス牛3種（リブ・ランプ・ハラミ）", "スモークポーク／スパイシーチキン", "飲み放題は2.5時間"],
-    image: "/images/counter-table-stools.jpg",
-    alt: "新宿の屋上ビアガーデンでブラックアンガス牛のアメリカンBBQを楽しむカウンターテーブル席",
+    image: "/images/american-bbq-beef-platter.jpg",
+    alt: "新宿の屋上ビアガーデンのアメリカンBBQコース、ブラックアンガス牛3種を焼き上げた大皿の盛り合わせ",
   },
   {
     id: "churrasco",
@@ -75,8 +75,8 @@ export const COURSES: Course[] = [
     drinkMinutes: 150,
     lead: "イチボ（ピッカーニャ）、サーロイン、ランプを串のまま焼き上げ、その場でカットしてお皿へ。焼きたての断面から立ちのぼる香りごと味わう、ブラジリアンスタイルです。",
     points: ["ピッカーニャ／サーロイン／ランプ", "目の前でカットするシュラスコスタイル", "飲み放題は2.5時間"],
-    image: "/images/lounge-night-warm-lights.jpg",
-    alt: "新宿の屋上ビアガーデンでシュラスコBBQコースを味わう夜の照明に包まれたテラス席",
+    image: "/images/churrasco-skewers.jpg",
+    alt: "新宿の屋上ビアガーデンのシュラスコBBQコース、串で焼き上げたピッカーニャやソーセージの盛り合わせ",
   },
 ];
 
@@ -120,3 +120,6 @@ export const OTHER_PLANS = [
 
 export const COURSE_NOTE =
   "掲載の価格・品数・飲み放題時間は、食べログ予約ページの掲載内容をそのまま記載しています。内容は時期により変更される場合があります。詳しいコース内容・最新料金は予約ページをご確認ください。";
+
+/** 料理写真がイメージ素材のため表示している注記。実店舗の撮影写真に差し替えたら削除してよい。 */
+export const PHOTO_NOTE = "※ 料理写真はイメージです。";

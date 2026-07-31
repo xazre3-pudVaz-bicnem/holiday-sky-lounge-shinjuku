@@ -22,7 +22,7 @@ export const metadata = buildMetadata({
   description:
     "新宿の屋上ビアガーデン「HOLIDAY SKY LOUNGE 新宿」のBBQコース一覧。肉と海鮮のスタンダードBBQ（全13品・2時間飲み放題付 ¥3,980）、韓国BBQ、ブラックアンガス牛のアメリカンBBQ、シュラスコBBQ、ランチ限定コースまで。すべて手ぶらでご利用いただけます。",
   path: "/course",
-  image: "/images/bbq-long-table-grill.jpg",
+  image: "/images/american-bbq-beef-platter.jpg",
   keywords: ["新宿 BBQ", "新宿 手ぶらBBQ", "新宿 飲み放題", "新宿 ビアガーデン コース", "新宿 バーベキュー"],
 });
 

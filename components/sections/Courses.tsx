@@ -3,7 +3,7 @@ import Link from "next/link";
 import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { ArrowIcon } from "@/components/ui/Icons";
-import { COURSES, COURSE_NOTE } from "@/data/courses";
+import { COURSES, COURSE_NOTE, PHOTO_NOTE } from "@/data/courses";
 import { LINKS } from "@/lib/site";
 
 const yen = (n: number) => `¥${n.toLocaleString("ja-JP")}`;
@@ -104,6 +104,8 @@ export default function Courses({ showAllLink = true }: { showAllLink?: boolean 
 
         <Reveal>
           <p className="mt-12 max-w-3xl border-l-2 border-sun/60 pl-5 text-[0.78rem] leading-[1.95] text-white/60">
+            {PHOTO_NOTE}
+            <br />
             {COURSE_NOTE}
           </p>
         </Reveal>

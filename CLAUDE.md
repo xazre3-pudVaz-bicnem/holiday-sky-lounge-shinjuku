@@ -51,8 +51,11 @@ Next.js 16.2.9（App Router / Turbopack）+ React 19 + TypeScript + Tailwind CSS
 - 未使用の元データ: `_photos-unused/`（`public/` の外なので配信されない）
 - `next/image` を使い、`sizes` を必ず指定する。`priority` はLCP画像（各ページのヒーロー）だけ
 - `alt` はSEOを意識した日本語で内容と一致させる。装飾画像のみ `alt=""`
-- **料理写真が元データに存在しない。** 入手でき次第 `data/courses.ts` と
-  `components/sections/FoodDrink.tsx` の `image` を差し替える想定
+- **料理写真11枚はAI生成のイメージ素材**（元データは `_photos-unused/ai-food-source/`）。
+  実際に提供される料理と異なるため、`data/courses.ts` の `PHOTO_NOTE`（「※ 料理写真はイメージです。」）を
+  コース／料理／ギャラリーの各セクションに表示している。
+  **実店舗で撮影した料理写真に差し替えたら `PHOTO_NOTE` の表示を削除してよい**
+  （表示箇所: `components/sections/Courses.tsx` / `FoodDrink.tsx` / `Gallery.tsx` / `app/food-drink/page.tsx`）
 
 ## SEO
 
