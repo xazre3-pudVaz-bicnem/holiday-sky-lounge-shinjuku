@@ -60,7 +60,7 @@ export default function Space() {
                   className="object-cover"
                 />
                 <figcaption className="absolute left-0 top-0 bg-white/92 px-4 py-2">
-                  <span className="u-en text-[0.68rem] text-brand">DAYTIME</span>
+                  <span className="u-en text-[0.7rem] text-brand">DAYTIME</span>
                 </figcaption>
               </div>
               <p className="mt-4 text-[0.85rem] leading-[1.95] text-ink-soft">
@@ -82,7 +82,7 @@ export default function Space() {
                   className="object-cover"
                 />
                 <figcaption className="absolute left-0 top-0 bg-ember/85 px-4 py-2">
-                  <span className="u-en text-[0.68rem] text-sun">NIGHT</span>
+                  <span className="u-en text-[0.7rem] text-sun">NIGHT</span>
                 </figcaption>
               </div>
               <p className="mt-4 text-[0.85rem] leading-[1.95] text-ink-soft">

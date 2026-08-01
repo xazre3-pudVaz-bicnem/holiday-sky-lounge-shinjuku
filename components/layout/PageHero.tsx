@@ -28,8 +28,9 @@ export default function PageHero({ en, title, lead, image, alt }: Props) {
         />
       </div>
 
-      <div className="container-wide relative flex min-h-[62svh] flex-col justify-end pb-16 pt-36 lg:min-h-[68svh] lg:pb-20 lg:pt-44">
-        <p className="u-eyebrow flex items-center gap-3 text-sun">
+      {/* 内容が画面より高いときに上へはみ出さないよう、justify-end ではなく mt-auto を使う */}
+      <div className="container-wide relative flex min-h-[62svh] flex-col pb-16 pt-28 lg:min-h-[68svh] lg:pb-20 lg:pt-40">
+        <p className="u-eyebrow mt-auto flex items-center gap-3 text-sun">
           <span aria-hidden="true" className="h-px w-8 bg-sun/60" />
           {en}
         </p>

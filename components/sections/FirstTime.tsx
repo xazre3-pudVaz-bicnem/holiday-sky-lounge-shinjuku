@@ -37,7 +37,7 @@ export default function FirstTime() {
             <Reveal delay={260}>
               <p className="mt-5 text-[0.78rem] leading-[1.9] text-ink-soft">
                 住所は{SHOP.addressFull}。順路がわからない場合は、店舗（
-                <a href={`tel:${SHOP.telShop.replace(/-/g, "")}`} className="text-brand underline underline-offset-4">
+                <a href={`tel:${SHOP.telShop.replace(/-/g, "")}`} className="inline-block py-1 text-brand underline underline-offset-4">
                   {SHOP.telShop}
                 </a>
                 ）までお気軽にお電話ください。

@@ -24,8 +24,10 @@ export default function Hero() {
         className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,22,14,0.62)_0%,rgba(8,22,14,0.28)_38%,rgba(8,22,14,0.55)_72%,rgba(8,22,14,0.86)_100%)]"
       />
 
-      <div className="container-wide relative flex min-h-[100svh] flex-col justify-end pb-[calc(var(--cta-height)+3.5rem)] pt-32 sm:pb-28 lg:pb-24">
-        <div className="max-w-3xl">
+      {/* justify-end ではなく mt-auto で下寄せする。
+          justify-end だと内容が画面より高いとき上へはみ出して見えなくなるため。 */}
+      <div className="container-wide relative flex min-h-[100svh] flex-col pb-[calc(var(--cta-height)+3.5rem)] pt-28 sm:pb-28 lg:pb-24">
+        <div className="mt-auto max-w-3xl">
           {/* 店舗ロゴ（ファーストビュー内に店名を明示） */}
           <Image
             src="/logo-white.png"
@@ -41,7 +43,7 @@ export default function Hero() {
             新宿・東新宿 ／ ROOFTOP BEER GARDEN
           </p>
 
-          <h1 className="text-shadow-hero mt-4 text-[1.9rem] font-medium leading-[1.5] text-white sm:text-[2.5rem] lg:text-[3.15rem] lg:leading-[1.42]">
+          <h1 className="text-shadow-hero mt-4 text-[1.65rem] font-medium leading-[1.5] text-white min-[360px]:text-[1.9rem] sm:text-[2.5rem] lg:text-[3.15rem] lg:leading-[1.42]">
             新宿の屋上で楽しむ
             <br />
             手ぶらBBQビアガーデン
@@ -76,18 +78,18 @@ export default function Hero() {
 
           <dl className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-white/20 pt-6 text-[0.78rem] text-white/75">
             <div className="flex items-baseline gap-2">
-              <dt className="u-en text-[0.62rem] text-sun">OPEN</dt>
+              <dt className="u-en text-[0.7rem] text-sun">OPEN</dt>
               <dd>{SHOP.hours}</dd>
             </div>
             <div className="flex items-baseline gap-2">
-              <dt className="u-en text-[0.62rem] text-sun">ACCESS</dt>
+              <dt className="u-en text-[0.7rem] text-sun">ACCESS</dt>
               <dd>
                 {ACCESS[0].station}
                 {ACCESS[0].detail}
               </dd>
             </div>
             <div className="flex items-baseline gap-2">
-              <dt className="u-en text-[0.62rem] text-sun">SEATS</dt>
+              <dt className="u-en text-[0.7rem] text-sun">SEATS</dt>
               <dd>{SHOP.seats}</dd>
             </div>
           </dl>
@@ -100,7 +102,7 @@ export default function Hero() {
         aria-label="SCROLL コンセプトセクションへ移動"
         className="absolute bottom-[calc(var(--cta-height)+0.75rem)] right-5 hidden items-center gap-3 text-white/70 transition-colors hover:text-white sm:bottom-8 sm:flex lg:right-10"
       >
-        <span className="u-en text-[0.6rem] [writing-mode:vertical-rl]">SCROLL</span>
+        <span className="u-en text-[0.7rem] [writing-mode:vertical-rl]">SCROLL</span>
         <span aria-hidden="true" className="scroll-line relative block h-14 w-px bg-white/30" />
       </a>
     </section>

@@ -22,7 +22,7 @@ export default function Access() {
             <Reveal delay={180}>
               <dl className="mt-12 border-t border-line text-[0.88rem]">
                 <div className="grid grid-cols-[6rem_1fr] gap-4 border-b border-line py-5">
-                  <dt className="u-en text-[0.68rem] text-brand">ADDRESS</dt>
+                  <dt className="u-en text-[0.7rem] text-brand">ADDRESS</dt>
                   <dd>
                     〒{SHOP.postalCode}
                     <br />
@@ -33,7 +33,7 @@ export default function Access() {
                   </dd>
                 </div>
                 <div className="grid grid-cols-[6rem_1fr] gap-4 border-b border-line py-5">
-                  <dt className="u-en text-[0.68rem] text-brand">TRAIN</dt>
+                  <dt className="u-en text-[0.7rem] text-brand">TRAIN</dt>
                   <dd>
                     <ul className="space-y-1.5">
                       {ACCESS.map((a) => (
@@ -46,7 +46,7 @@ export default function Access() {
                   </dd>
                 </div>
                 <div className="grid grid-cols-[6rem_1fr] gap-4 border-b border-line py-5">
-                  <dt className="u-en text-[0.68rem] text-brand">OPEN</dt>
+                  <dt className="u-en text-[0.7rem] text-brand">OPEN</dt>
                   <dd>
                     {SHOP.hours}
                     <span className="mt-1 block text-[0.78rem] text-ink-soft">
@@ -55,11 +55,11 @@ export default function Access() {
                   </dd>
                 </div>
                 <div className="grid grid-cols-[6rem_1fr] gap-4 border-b border-line py-5">
-                  <dt className="u-en text-[0.68rem] text-brand">TEL</dt>
+                  <dt className="u-en text-[0.7rem] text-brand">TEL</dt>
                   <dd>
                     <a
                       href={`tel:${SHOP.telReserve.replace(/-/g, "")}`}
-                      className="underline underline-offset-4 hover:text-brand"
+                      className="inline-block py-1 underline underline-offset-4 hover:text-brand"
                     >
                       {SHOP.telReserve}
                     </a>
@@ -67,7 +67,7 @@ export default function Access() {
                     <br />
                     <a
                       href={`tel:${SHOP.telShop.replace(/-/g, "")}`}
-                      className="underline underline-offset-4 hover:text-brand"
+                      className="inline-block py-1 underline underline-offset-4 hover:text-brand"
                     >
                       {SHOP.telShop}
                     </a>
@@ -75,13 +75,13 @@ export default function Access() {
                   </dd>
                 </div>
                 <div className="grid grid-cols-[6rem_1fr] gap-4 border-b border-line py-5">
-                  <dt className="u-en text-[0.68rem] text-brand">SEATS</dt>
+                  <dt className="u-en text-[0.7rem] text-brand">SEATS</dt>
                   <dd>
                     {SHOP.seats}（{SHOP.seatsDetail}）
                   </dd>
                 </div>
                 <div className="grid grid-cols-[6rem_1fr] gap-4 border-b border-line py-5">
-                  <dt className="u-en text-[0.68rem] text-brand">PARKING</dt>
+                  <dt className="u-en text-[0.7rem] text-brand">PARKING</dt>
                   <dd className="text-ink-soft">{SHOP.parking}</dd>
                 </div>
               </dl>

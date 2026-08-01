@@ -30,7 +30,7 @@ export default function Footer() {
               <br />
               <a
                 href={`tel:${SHOP.telReserve.replace(/-/g, "")}`}
-                className="transition-colors hover:text-white"
+                className="inline-block py-1 transition-colors hover:text-white"
               >
                 {SHOP.telReserve}
               </a>
@@ -38,7 +38,7 @@ export default function Footer() {
               <br />
               <a
                 href={`tel:${SHOP.telShop.replace(/-/g, "")}`}
-                className="transition-colors hover:text-white"
+                className="inline-block py-1 transition-colors hover:text-white"
               >
                 {SHOP.telShop}
               </a>
@@ -51,14 +51,14 @@ export default function Footer() {
             <ul className="mt-6 space-y-3 text-[0.85rem]">
               {NAV.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="transition-colors hover:text-white">
+                  <Link href={item.href} className="inline-block py-1 transition-colors hover:text-white">
                     <span className="u-en text-[0.72rem] text-white/60">{item.label}</span>
                     <span className="ml-3">{item.labelJa}</span>
                   </Link>
                 </li>
               ))}
               <li>
-                <Link href="/faq" className="transition-colors hover:text-white">
+                <Link href="/faq" className="inline-block py-1 transition-colors hover:text-white">
                   <span className="u-en text-[0.72rem] text-white/60">FAQ</span>
                   <span className="ml-3">よくある質問</span>
                 </Link>

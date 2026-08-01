@@ -113,7 +113,7 @@ export default function SpacePage() {
                     className="object-cover"
                   />
                   <figcaption className="absolute left-0 top-0 bg-white/92 px-4 py-2">
-                    <span className="u-en text-[0.68rem] text-brand">11:30 — DAYTIME</span>
+                    <span className="u-en text-[0.7rem] text-brand">11:30 — DAYTIME</span>
                   </figcaption>
                 </div>
                 <div className="mt-5 space-y-4 text-[0.87rem] leading-[2] text-ink-soft">
@@ -140,7 +140,7 @@ export default function SpacePage() {
                     className="object-cover"
                   />
                   <figcaption className="absolute left-0 top-0 bg-ember/85 px-4 py-2">
-                    <span className="u-en text-[0.68rem] text-sun">— 23:45 NIGHT</span>
+                    <span className="u-en text-[0.7rem] text-sun">— 23:45 NIGHT</span>
                   </figcaption>
                 </div>
                 <div className="mt-5 space-y-4 text-[0.87rem] leading-[2] text-ink-soft">
@@ -213,14 +213,14 @@ export default function SpacePage() {
           <Reveal>
             <dl className="mt-16 grid gap-x-10 gap-y-6 border-t border-line pt-10 sm:grid-cols-2 lg:grid-cols-4">
               <div>
-                <dt className="u-en text-[0.66rem] text-brand">SEATS</dt>
+                <dt className="u-en text-[0.7rem] text-brand">SEATS</dt>
                 <dd className="mt-2 text-[0.88rem] text-ink">
                   {SHOP.seats}
                   <span className="mt-1 block text-[0.76rem] text-ink-soft">{SHOP.seatsDetail}</span>
                 </dd>
               </div>
               <div>
-                <dt className="u-en text-[0.66rem] text-brand">PRIVATE ROOM</dt>
+                <dt className="u-en text-[0.7rem] text-brand">PRIVATE ROOM</dt>
                 <dd className="mt-2 text-[0.88rem] text-ink">
                   10〜30名
                   <span className="mt-1 block text-[0.76rem] text-ink-soft">
@@ -229,14 +229,14 @@ export default function SpacePage() {
                 </dd>
               </div>
               <div>
-                <dt className="u-en text-[0.66rem] text-brand">CHARTER</dt>
+                <dt className="u-en text-[0.7rem] text-brand">CHARTER</dt>
                 <dd className="mt-2 text-[0.88rem] text-ink">
                   50名〜
                   <span className="mt-1 block text-[0.76rem] text-ink-soft">貸切のご相談を承ります</span>
                 </dd>
               </div>
               <div>
-                <dt className="u-en text-[0.66rem] text-brand">SMOKING</dt>
+                <dt className="u-en text-[0.7rem] text-brand">SMOKING</dt>
                 <dd className="mt-2 text-[0.88rem] text-ink">
                   分煙
                   <span className="mt-1 block text-[0.76rem] text-ink-soft">加熱式たばこ限定</span>

@@ -72,7 +72,7 @@ export default function SearchIntent() {
                 <p className="mt-4 text-[0.87rem] leading-[2.05] text-ink-soft">{t.a}</p>
                 <Link
                   href={t.link.href}
-                  className="mt-5 inline-flex items-center gap-2 text-[0.78rem] font-semibold tracking-[0.08em] text-brand transition-colors hover:text-brand-deep"
+                  className="mt-5 inline-flex items-center gap-2 py-1 text-[0.78rem] font-semibold tracking-[0.08em] text-brand transition-colors hover:text-brand-deep"
                 >
                   {t.link.label}
                   <ArrowIcon className="h-3.5 w-3.5" />

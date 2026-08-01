@@ -36,7 +36,7 @@ export default function MapEmbed() {
             <br />
             東新宿駅A1出口から徒歩2分
           </span>
-          <span aria-hidden="true" className="u-en text-[0.62rem] text-brand">TAP TO LOAD GOOGLE MAP</span>
+          <span aria-hidden="true" className="u-en text-[0.7rem] text-brand">TAP TO LOAD GOOGLE MAP</span>
         </button>
       )}
     </div>

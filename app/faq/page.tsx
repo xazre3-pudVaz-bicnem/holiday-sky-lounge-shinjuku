@@ -65,11 +65,11 @@ export default function FaqPage() {
               <Reveal delay={80}>
                 <dl className="mt-10 border-t border-line">
                   <div className="grid gap-1 border-b border-line py-5 sm:grid-cols-[9rem_1fr]">
-                    <dt className="u-en text-[0.68rem] text-brand">RESERVE TEL</dt>
+                    <dt className="u-en text-[0.7rem] text-brand">RESERVE TEL</dt>
                     <dd>
                       <a
                         href={`tel:${SHOP.telReserve.replace(/-/g, "")}`}
-                        className="text-[1.05rem] underline underline-offset-4 hover:text-brand"
+                        className="inline-block py-1 text-[1.05rem] underline underline-offset-4 hover:text-brand"
                       >
                         {SHOP.telReserve}
                       </a>
@@ -77,11 +77,11 @@ export default function FaqPage() {
                     </dd>
                   </div>
                   <div className="grid gap-1 border-b border-line py-5 sm:grid-cols-[9rem_1fr]">
-                    <dt className="u-en text-[0.68rem] text-brand">SHOP TEL</dt>
+                    <dt className="u-en text-[0.7rem] text-brand">SHOP TEL</dt>
                     <dd>
                       <a
                         href={`tel:${SHOP.telShop.replace(/-/g, "")}`}
-                        className="text-[1.05rem] underline underline-offset-4 hover:text-brand"
+                        className="inline-block py-1 text-[1.05rem] underline underline-offset-4 hover:text-brand"
                       >
                         {SHOP.telShop}
                       </a>
@@ -89,7 +89,7 @@ export default function FaqPage() {
                     </dd>
                   </div>
                   <div className="grid gap-1 border-b border-line py-5 sm:grid-cols-[9rem_1fr]">
-                    <dt className="u-en text-[0.68rem] text-brand">OPEN</dt>
+                    <dt className="u-en text-[0.7rem] text-brand">OPEN</dt>
                     <dd className="text-[0.9rem]">
                       {SHOP.hours}
                       <span className="mt-1 block text-[0.76rem] text-ink-soft">
@@ -98,7 +98,7 @@ export default function FaqPage() {
                     </dd>
                   </div>
                   <div className="grid gap-1 border-b border-line py-5 sm:grid-cols-[9rem_1fr]">
-                    <dt className="u-en text-[0.68rem] text-brand">PAYMENT</dt>
+                    <dt className="u-en text-[0.7rem] text-brand">PAYMENT</dt>
                     <dd className="text-[0.9rem] leading-[1.9]">{SHOP.payment}</dd>
                   </div>
                 </dl>
