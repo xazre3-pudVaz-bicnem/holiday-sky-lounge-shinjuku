@@ -33,7 +33,7 @@ const SEATS = [
 
 export default function Space() {
   return (
-    <section id="space" className="cv-auto bg-white py-24 lg:py-36">
+    <section id="space" className="bg-white py-24 lg:py-36">
       <div className="container-wide">
         <SectionHeading
           en="Space"
@@ -55,6 +55,7 @@ export default function Space() {
                   alt="青空とパラソル、ヤシの木に囲まれた昼間の新宿の屋上ビアガーデン"
                   fill
                   loading="lazy"
+                  quality={65}
                   sizes="(max-width: 768px) 100vw, 46vw"
                   className="object-cover"
                 />
@@ -76,6 +77,7 @@ export default function Space() {
                   alt="照明が灯り夜景に包まれた新宿の屋上ビアガーデンの夜のテラス席"
                   fill
                   loading="lazy"
+                  quality={65}
                   sizes="(max-width: 768px) 100vw, 46vw"
                   className="object-cover"
                 />
@@ -98,6 +100,7 @@ export default function Space() {
               alt="新宿の街並みとビル群を見渡す、日没後の屋上ビアガーデンの夜景"
               fill
               loading="lazy"
+              quality={65}
               sizes="100vw"
               className="object-cover"
             />
@@ -114,6 +117,7 @@ export default function Space() {
                   alt={s.alt}
                   fill
                   loading="lazy"
+                  quality={65}
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 46vw, 23vw"
                   className="object-cover"
                 />

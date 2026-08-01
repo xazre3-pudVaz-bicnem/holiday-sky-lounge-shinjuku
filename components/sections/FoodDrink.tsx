@@ -54,6 +54,7 @@ export default function FoodDrink() {
                   alt="炭火のグリルで焼き上げる、新宿の屋上ビアガーデンのステーキ"
                   fill
                   loading="lazy"
+                  quality={65}
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"
                 />
@@ -112,6 +113,7 @@ export default function FoodDrink() {
                   alt="新宿の屋上ビアガーデンで提供されるトロピカルカクテル6種が並ぶテーブル"
                   fill
                   loading="lazy"
+                  quality={65}
                   sizes="(max-width: 768px) 100vw, 40vw"
                   className="object-cover"
                 />
@@ -124,6 +126,7 @@ export default function FoodDrink() {
                   alt="よく冷えた生ビールのジョッキを合わせて乾杯する新宿の屋上ビアガーデン"
                   fill
                   loading="lazy"
+                  quality={65}
                   sizes="(max-width: 768px) 100vw, 58vw"
                   className="object-cover"
                 />

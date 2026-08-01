@@ -142,6 +142,7 @@ export default function FoodDrinkPage() {
                     alt="新宿の屋上ビアガーデンで焼き上げたステーキと厚切り豚バラ、グリル野菜の盛り合わせ"
                     fill
                     loading="lazy"
+                    quality={65}
                     sizes="(max-width: 1024px) 100vw, 40vw"
                     className="object-cover"
                   />
@@ -197,6 +198,7 @@ export default function FoodDrinkPage() {
                   alt="新宿の屋上ビアガーデンの海鮮とグリル野菜、チキンやソーセージを盛り合わせたBBQプレート"
                   fill
                   loading="lazy"
+                  quality={65}
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"
                 />
@@ -228,6 +230,7 @@ export default function FoodDrinkPage() {
                     alt={g.alt}
                     fill
                     loading="lazy"
+                    quality={65}
                     sizes="(max-width: 1024px) 100vw, 31vw"
                     className="object-cover"
                   />

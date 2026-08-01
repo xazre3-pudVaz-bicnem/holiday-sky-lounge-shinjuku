@@ -12,6 +12,7 @@ export default function ReserveCta() {
           alt=""
           fill
           loading="lazy"
+          quality={65}
           sizes="100vw"
           className="object-cover"
         />

@@ -52,7 +52,7 @@ const TOPICS = [
 
 export default function SearchIntent() {
   return (
-    <section className="cv-auto bg-white py-24 lg:py-36">
+    <section className="bg-white py-24 lg:py-36">
       <div className="container-wide">
         <SectionHeading
           en="Guide"

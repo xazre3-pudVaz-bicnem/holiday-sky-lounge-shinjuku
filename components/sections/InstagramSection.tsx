@@ -70,6 +70,7 @@ export default function InstagramSection() {
                       alt={s.alt}
                       fill
                       loading="lazy"
+                      quality={65}
                       sizes="(max-width: 1024px) 48vw, 24vw"
                       className="object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
                     />

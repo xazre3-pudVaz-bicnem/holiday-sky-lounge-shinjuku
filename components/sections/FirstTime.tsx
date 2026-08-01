@@ -7,7 +7,7 @@ import { LINKS, SHOP } from "@/lib/site";
 
 export default function FirstTime() {
   return (
-    <section id="first-time" className="cv-auto bg-white py-24 lg:py-36">
+    <section id="first-time" className="bg-white py-24 lg:py-36">
       <div className="container-wide">
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-20">
           <div className="lg:col-span-5">
@@ -27,6 +27,7 @@ export default function FirstTime() {
                   alt="新宿・大久保のK-SQUARE屋上にあるビアガーデンの入口付近のテラス"
                   fill
                   loading="lazy"
+                  quality={65}
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"
                 />

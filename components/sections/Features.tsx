@@ -9,7 +9,7 @@ import { FEATURES } from "@/data/content";
  */
 export default function Features() {
   return (
-    <section id="features" className="cv-auto bg-white py-24 lg:py-36">
+    <section id="features" className="bg-white py-24 lg:py-36">
       <div className="container-wide">
         <SectionHeading
           en="Why HOLIDAY"
@@ -42,6 +42,7 @@ export default function Features() {
                     alt={f.alt}
                     fill
                     loading="lazy"
+                    quality={65}
                     sizes="(max-width: 1024px) 100vw, 56vw"
                     className="object-cover"
                   />

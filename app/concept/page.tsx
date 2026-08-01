@@ -137,6 +137,7 @@ export default function ConceptPage() {
                       alt={p.alt}
                       fill
                       loading="lazy"
+                      quality={65}
                       sizes="(max-width: 1024px) 100vw, 48vw"
                       className="object-cover"
                     />

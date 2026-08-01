@@ -18,6 +18,7 @@ export default function Courses({ showAllLink = true }: { showAllLink?: boolean 
           alt=""
           fill
           loading="lazy"
+          quality={65}
           sizes="100vw"
           className="object-cover"
         />
@@ -46,6 +47,7 @@ export default function Courses({ showAllLink = true }: { showAllLink?: boolean 
                       alt={c.alt}
                       fill
                       loading="lazy"
+                      quality={65}
                       sizes="(max-width: 768px) 100vw, 33vw"
                       className="object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
                     />

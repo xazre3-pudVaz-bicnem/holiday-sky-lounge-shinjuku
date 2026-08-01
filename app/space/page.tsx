@@ -108,6 +108,7 @@ export default function SpacePage() {
                     alt="青空とパラソルが広がる昼間の新宿の屋上ビアガーデン"
                     fill
                     loading="lazy"
+                    quality={65}
                     sizes="(max-width: 768px) 100vw, 46vw"
                     className="object-cover"
                   />
@@ -134,6 +135,7 @@ export default function SpacePage() {
                     alt="ガーランドライトが灯る新宿の屋上ビアガーデンの夜のテラス席"
                     fill
                     loading="lazy"
+                    quality={65}
                     sizes="(max-width: 768px) 100vw, 46vw"
                     className="object-cover"
                   />
@@ -165,6 +167,7 @@ export default function SpacePage() {
                 alt="新宿の街の灯りを見渡す屋上ビアガーデンの夜景とテラス席"
                 fill
                 loading="lazy"
+                quality={65}
                 sizes="100vw"
                 className="object-cover"
               />
@@ -194,6 +197,7 @@ export default function SpacePage() {
                       alt={a.alt}
                       fill
                       loading="lazy"
+                      quality={65}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 48vw, 31vw"
                       className="object-cover"
                     />

@@ -131,19 +131,22 @@
     transition:
       opacity 0.9s var(--ease-holiday),
       transform 0.9s var(--ease-holiday);
-    will-change: opacity, transform;
   }
   .reveal[data-visible="true"] {
     opacity: 1;
     transform: none;
   }
 
-  .reveal-clip {
+  /*
+   * clip は「観測している要素自身」ではなく必ず子要素に当てる。
+   * 監視対象に clip-path を掛けると表示面積が0になり、
+   * IntersectionObserver が永久に発火せず要素が出てこなくなる。
+   */
+  .reveal-clip > * {
     clip-path: inset(0 0 100% 0);
     transition: clip-path 1.15s var(--ease-holiday);
-    will-change: clip-path;
   }
-  .reveal-clip[data-visible="true"] {
+  .reveal-clip[data-visible="true"] > * {
     clip-path: inset(0 0 0 0);
   }
 
@@ -299,17 +302,30 @@
     }
   }
 
-  /* 画面外セクションのレイアウト/描画をスキップし、長いページの負荷を下げる */
-  .cv-auto {
-    content-visibility: auto;
-    contain-intrinsic-size: auto 900px;
-  }
-
   .container-read {
     width: 100%;
     max-width: 46rem;
     margin-inline: auto;
     padding-inline: 1.25rem;
+  }
+}
+
+/* 各セクションのレイアウト計算を独立させ、長いページの再計算コストを下げる。
+   content-visibility と違い描画をスキップしないので、表示・監視には影響しない。 */
+main > section {
+  contain: layout;
+}
+
+/* ---------- JavaScript無効時のフォールバック ---------- */
+/* reveal はJSで表示するため、JSが動かない環境では常時表示にする */
+@media (scripting: none) {
+  .reveal,
+  .reveal-clip > *,
+  .reveal-zoom img {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    transition: none !important;
   }
 }
 
@@ -319,7 +335,7 @@
     scroll-behavior: auto;
   }
   .reveal,
-  .reveal-clip,
+  .reveal-clip > *,
   .reveal-zoom img {
     opacity: 1 !important;
     transform: none !important;

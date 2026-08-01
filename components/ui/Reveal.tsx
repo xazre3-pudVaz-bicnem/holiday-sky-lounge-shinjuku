@@ -17,13 +17,52 @@ const VARIANT_CLASS = {
   zoom: "reveal reveal-zoom",
 } as const;
 
-/**
- * ページ内に多数配置するため、IntersectionObserver は1つだけ生成して共有する。
- * （要素ごとに生成するとモバイルのメインスレッド負荷が大きくなるため）
+/*
+ * ページ内に200個近く配置するため、IntersectionObserver は1つだけ生成して共有する。
+ *
+ * さらに「万一 observer が発火しなくても要素が消えたままにならない」保険として、
+ * スクロール時に未表示要素の位置を直接見て表示する fail-open のフォールバックを持つ。
+ * （content-visibility でスキップされた領域など、observer が発火しない状況があるため。
+ *   最悪アニメーションが出ないだけで、コンテンツが見えなくなることはない）
  */
-type Callback = () => void;
-const callbacks = new WeakMap<Element, Callback>();
+type Entry = { el: Element; reveal: () => void };
+
+const pending = new Set<Entry>();
 let observer: IntersectionObserver | null = null;
+let fallbackBound = false;
+let ticking = false;
+
+/** ビューポート下端の少し上まで来ていたら表示する */
+const TRIGGER_RATIO = 0.92;
+
+function flushFallback() {
+  ticking = false;
+  const limit = window.innerHeight * TRIGGER_RATIO;
+  for (const entry of Array.from(pending)) {
+    const rect = entry.el.getBoundingClientRect();
+    // rect が潰れている（レイアウトがスキップされている）場合も表示側に倒す
+    const collapsed = rect.width === 0 && rect.height === 0;
+    if (collapsed || rect.top < limit) {
+      pending.delete(entry);
+      observer?.unobserve(entry.el);
+      entry.reveal();
+    }
+  }
+}
+
+function scheduleFallback() {
+  if (ticking) return;
+  ticking = true;
+  requestAnimationFrame(flushFallback);
+}
+
+function bindFallback() {
+  if (fallbackBound) return;
+  fallbackBound = true;
+  window.addEventListener("scroll", scheduleFallback, { passive: true });
+  window.addEventListener("resize", scheduleFallback, { passive: true });
+  window.addEventListener("load", scheduleFallback);
+}
 
 function getObserver() {
   if (observer) return observer;
@@ -32,12 +71,18 @@ function getObserver() {
     (entries) => {
       for (const entry of entries) {
         if (!entry.isIntersecting) continue;
-        callbacks.get(entry.target)?.();
-        callbacks.delete(entry.target);
-        observer?.unobserve(entry.target);
+        for (const p of pending) {
+          if (p.el !== entry.target) continue;
+          pending.delete(p);
+          observer?.unobserve(p.el);
+          p.reveal();
+          break;
+        }
       }
     },
-    { rootMargin: "0px 0px -12% 0px", threshold: 0.08 },
+    // threshold は 0 にする。面積比を条件にすると、
+    // クリップやスケールで表示面積が縮んだ要素が出てこなくなる。
+    { rootMargin: "0px 0px -8% 0px", threshold: 0 },
   );
   return observer;
 }
@@ -56,17 +101,22 @@ export default function Reveal({
     const el = ref.current;
     if (!el) return;
 
+    const entry: Entry = { el, reveal: () => setVisible(true) };
     const io = getObserver();
+
     if (!io) {
-      // 未対応ブラウザでは常時表示にフォールバック
+      // IntersectionObserver 非対応環境では常時表示
       const id = window.setTimeout(() => setVisible(true), 0);
       return () => window.clearTimeout(id);
     }
 
-    callbacks.set(el, () => setVisible(true));
+    pending.add(entry);
     io.observe(el);
+    bindFallback();
+    scheduleFallback();
+
     return () => {
-      callbacks.delete(el);
+      pending.delete(entry);
       io.unobserve(el);
     };
   }, []);

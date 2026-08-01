@@ -71,7 +71,8 @@ export default function Gallery() {
   const current = index === null ? null : GALLERY[index];
 
   return (
-    <section id="gallery" className="cv-auto bg-ivory-deep py-24 lg:py-36">
+    <>
+      <section id="gallery" className="bg-ivory-deep py-24 lg:py-36">
       <div className="container-wide">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
@@ -113,6 +114,7 @@ export default function Gallery() {
                     alt={g.alt}
                     fill
                     loading="lazy"
+                    quality={65}
                     sizes="(max-width: 640px) 48vw, (max-width: 1024px) 48vw, 23vw"
                     className="object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
                   />
@@ -125,9 +127,11 @@ export default function Gallery() {
             </Reveal>
           ))}
         </div>
-      </div>
+        </div>
+      </section>
 
-      {/* ---------- ライトボックス ---------- */}
+      {/* ライトボックスは position:fixed のため、
+          contain:layout が効く <section> の外に置く（section基準に位置がずれるのを防ぐ） */}
       {current !== null && index !== null ? (
         <div
           ref={dialogRef}
@@ -190,6 +194,6 @@ export default function Gallery() {
           </button>
         </div>
       ) : null}
-    </section>
+    </>
   );
 }

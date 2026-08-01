@@ -12,7 +12,7 @@ export default function Faq({
   showAllLink?: boolean;
 }) {
   return (
-    <section id="faq" className="cv-auto bg-ivory-deep py-24 lg:py-36">
+    <section id="faq" className="bg-ivory-deep py-24 lg:py-36">
       <div className="container-wide">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-20">
           <div className="lg:col-span-4">

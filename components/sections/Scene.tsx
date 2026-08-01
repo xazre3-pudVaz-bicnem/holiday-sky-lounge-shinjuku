@@ -7,7 +7,7 @@ import { SCENES } from "@/data/content";
 
 export default function Scene({ full = false }: { full?: boolean }) {
   return (
-    <section id="scene" className="cv-auto paper py-24 lg:py-36">
+    <section id="scene" className="paper py-24 lg:py-36">
       <div className="container-wide">
         <SectionHeading
           en="Scene"
@@ -40,6 +40,7 @@ export default function Scene({ full = false }: { full?: boolean }) {
                       alt={s.alt}
                       fill
                       loading="lazy"
+                      quality={65}
                       sizes="(max-width: 768px) 100vw, 40vw"
                       className="object-cover"
                     />

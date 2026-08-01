@@ -17,6 +17,7 @@ export default function Footer() {
               width={1200}
               height={625}
               loading="lazy"
+              quality={65}
               sizes="(max-width: 640px) 210px, 260px"
               className="h-auto w-[210px] lg:w-[260px]"
             />
