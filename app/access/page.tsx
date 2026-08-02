@@ -6,9 +6,10 @@ import Access from "@/components/sections/Access";
 import FirstTime from "@/components/sections/FirstTime";
 import ReserveCta from "@/components/sections/ReserveCta";
 import { JsonLd } from "@/components/ui/JsonLd";
-import { breadcrumbJsonLd } from "@/lib/jsonld";
+import { accessPlaceJsonLd, breadcrumbJsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/seo";
-import { ACCESS } from "@/lib/site";
+import { lastModifiedOf } from "@/lib/routes";
+import { ACCESS } from "@/lib/site-config";
 
 const CRUMBS = [
   { name: "ホーム", path: "/" },
@@ -16,12 +17,12 @@ const CRUMBS = [
 ];
 
 export const metadata = buildMetadata({
-  title: "アクセス・店舗情報｜東新宿駅A1出口から徒歩2分",
+  title: "東新宿・新大久保から歩けるビアガーデンのアクセス",
   description:
     "新宿の屋上ビアガーデン「HOLIDAY SKY LOUNGE 新宿」へのアクセス。東京都新宿区大久保1-8-4 K-SQUARE屋上、東新宿駅A1出口から徒歩2分、西武新宿駅から3分、新大久保駅から4分、新宿駅東口から6分。営業時間・電話番号・駐車場情報も掲載しています。",
   path: "/access",
   image: "/images/terrace-city-view-day.jpg",
-  keywords: ["東新宿 ビアガーデン", "新大久保 ビアガーデン", "新宿 ビアガーデン アクセス", "新宿 屋上レストラン"],
+  keywords: ["東新宿 ビアガーデン", "新大久保 ビアガーデン", "新宿 ビアガーデン アクセス"],
 });
 
 const ROUTES = [
@@ -54,13 +55,19 @@ const ROUTES = [
 export default function AccessPage() {
   return (
     <>
-      <JsonLd data={breadcrumbJsonLd(CRUMBS)} />
+      <JsonLd
+        data={[
+          webPageJsonLd({ path: "/access", name: metadata.title as string, description: metadata.description as string, lastModified: lastModifiedOf("/access"), image: "/images/terrace-city-view-day.jpg", hasBreadcrumb: true }),
+          breadcrumbJsonLd(CRUMBS, "/access"),
+          accessPlaceJsonLd(),
+        ]}
+      />
       <PageHero
         en="Access"
         title="東新宿駅から徒歩2分。4つの駅から歩ける屋上へ。"
         lead="住所は東京都新宿区大久保1-8-4「K-SQUARE」。エレベーターで最上階まで上がり、通路を進んだ先が屋上の入口です。東新宿・西武新宿・新大久保・新宿東口の4駅からお越しいただけます。"
         image="/images/terrace-city-view-day.jpg"
-        alt="新宿の街並みを見下ろす屋上ビアガーデンのテラスからの眺め"
+        alt="テラスのフェンス越しに見下ろす新宿方面の街並み"
       />
 
       <div className="bg-ivory pb-4">

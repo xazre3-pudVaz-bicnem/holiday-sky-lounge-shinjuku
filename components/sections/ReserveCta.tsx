@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
 import { ArrowIcon, ClockIcon, PhoneIcon, PinIcon } from "@/components/ui/Icons";
-import { ACCESS, LINKS, SHOP } from "@/lib/site";
+import { ACCESS, LINKS, SHOP } from "@/lib/site-config";
+import { track } from "@/lib/analytics";
 
 export default function ReserveCta() {
   return (
@@ -47,11 +48,12 @@ export default function ReserveCta() {
               target="_blank"
               rel="noopener noreferrer"
               className="btn bg-white px-10 text-brand-deep hover:bg-sun hover:text-ember"
+              {...track("reservation_click", "reserve-section")}
             >
               空席を確認・予約する
               <ArrowIcon className="h-4 w-4" />
             </a>
-            <a href={`tel:${SHOP.telReserve.replace(/-/g, "")}`} className="btn btn-ghost-light">
+            <a href={`tel:${SHOP.telReserve.replace(/-/g, "")}`} className="btn btn-ghost-light" {...track("phone_click", "reserve-section")}>
               <PhoneIcon className="h-4 w-4" />
               {SHOP.telReserve}
             </a>

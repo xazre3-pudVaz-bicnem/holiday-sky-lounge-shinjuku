@@ -15,7 +15,7 @@ export default function Concept() {
               <div className="reveal-zoom relative aspect-[4/3] overflow-hidden lg:aspect-[3/2]">
                 <Image
                   src="/images/concept-sunset-palm-sign.jpg"
-                  alt="夕暮れの新宿の空の下、ヤシの木とHOLIDAYのサインが並ぶ屋上ビアガーデンのテラス席"
+                  alt="夕暮れの空を背景にヤシの木とHOLIDAYのサインが並ぶテラス席"
                   fill
                   sizes="(max-width: 1024px) 100vw, 58vw"
                   className="object-cover"

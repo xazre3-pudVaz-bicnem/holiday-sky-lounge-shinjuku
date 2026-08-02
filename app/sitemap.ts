@@ -1,22 +1,15 @@
 import type { MetadataRoute } from "next";
-import { SITE_URL } from "@/lib/site";
+import { absoluteUrl } from "@/lib/site-config";
+import { ROUTES } from "@/lib/routes";
 
+/**
+ * lastModified は lib/routes.ts に手で記録した「実際の更新日」を使う。
+ * ビルドのたびに現在日時へ書き換えない。
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
-  const routes: { path: string; priority: number; changeFrequency: "weekly" | "monthly" }[] = [
-    { path: "/", priority: 1, changeFrequency: "weekly" },
-    { path: "/course", priority: 0.9, changeFrequency: "weekly" },
-    { path: "/food-drink", priority: 0.8, changeFrequency: "monthly" },
-    { path: "/space", priority: 0.8, changeFrequency: "monthly" },
-    { path: "/scene", priority: 0.8, changeFrequency: "monthly" },
-    { path: "/access", priority: 0.8, changeFrequency: "monthly" },
-    { path: "/concept", priority: 0.7, changeFrequency: "monthly" },
-    { path: "/faq", priority: 0.7, changeFrequency: "monthly" },
-  ];
-
-  return routes.map((r) => ({
-    url: `${SITE_URL}${r.path}`,
-    lastModified: now,
+  return ROUTES.map((r) => ({
+    url: absoluteUrl(r.path),
+    lastModified: new Date(`${r.lastModified}T00:00:00+09:00`),
     changeFrequency: r.changeFrequency,
     priority: r.priority,
   }));

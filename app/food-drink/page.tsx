@@ -6,8 +6,9 @@ import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ReserveCta from "@/components/sections/ReserveCta";
 import { JsonLd } from "@/components/ui/JsonLd";
-import { breadcrumbJsonLd } from "@/lib/jsonld";
+import { breadcrumbJsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/seo";
+import { lastModifiedOf } from "@/lib/routes";
 import { ArrowIcon } from "@/components/ui/Icons";
 import { PHOTO_NOTE } from "@/data/courses";
 
@@ -17,12 +18,12 @@ const CRUMBS = [
 ];
 
 export const metadata = buildMetadata({
-  title: "料理・ドリンク｜ブラックアンガス牛と海鮮の手ぶらBBQ",
+  title: "新宿のBBQで食べられる肉｜シュラスコ・サムギョプサル・海鮮",
   description:
     "新宿の屋上ビアガーデン「HOLIDAY SKY LOUNGE 新宿」の料理とドリンク。ブラックアンガス牛のリブ・ランプ・ハラミ、サムギョプサル、シュラスコ、ガーリックシュリンプなどの手ぶらBBQと、生ビール・ボトルビール・カクテルが選べる飲み放題をご紹介します。",
   path: "/food-drink",
   image: "/images/churrasco-carving.jpg",
-  keywords: ["新宿 BBQ", "新宿 飲み放題", "新宿 ビアガーデン 料理", "新宿 バーベキュー", "新宿 昼飲み"],
+  keywords: ["新宿 シュラスコ", "新宿 サムギョプサル", "新宿 BBQ 肉", "新宿 ビアガーデン 料理"],
 });
 
 const MEAT = [
@@ -94,7 +95,7 @@ const DRINK_GROUPS = [
     items: ["トロピカルカクテル", "ハイボール・焼酎", "ワイン", "スパークリングワイン"],
     body: "青やオレンジの南国らしいカクテルは、明るいうちに頼むと写真がよく映えます。誕生日や記念日のHAPPYコースには、乾杯用のスパークリングワインが付きます。",
     image: "/images/cocktails-row-fence.jpg",
-    alt: "新宿の屋上ビアガーデンで提供されるカラフルなトロピカルカクテル",
+    alt: "レモンやミントを添えたトロピカルカクテル",
   },
   {
     en: "Soft Drink",
@@ -102,20 +103,25 @@ const DRINK_GROUPS = [
     items: ["ソフトドリンク各種"],
     body: "お酒を飲まない方や、お子様連れの方も安心してご利用いただけるよう、飲み放題にはソフトドリンクも含まれています。お子様は5歳以下無料、6〜10歳は半額です。",
     image: "/images/cheers-corona-daytime.jpg",
-    alt: "昼の新宿の屋上ビアガーデンで飲み物を合わせて乾杯する様子",
+    alt: "日差しの入るテラスで飲み物を合わせて乾杯する手元",
   },
 ];
 
 export default function FoodDrinkPage() {
   return (
     <>
-      <JsonLd data={breadcrumbJsonLd(CRUMBS)} />
+      <JsonLd
+        data={[
+          webPageJsonLd({ path: "/food-drink", name: metadata.title as string, description: metadata.description as string, lastModified: lastModifiedOf("/food-drink"), image: "/images/churrasco-carving.jpg", hasBreadcrumb: true }),
+          breadcrumbJsonLd(CRUMBS, "/food-drink"),
+        ]}
+      />
       <PageHero
         en="Food & Drink"
         title="火を囲み、焼きたてを頬張る。"
         lead="下ごしらえを済ませた食材が、焼くだけの状態で運ばれてきます。網にのせて、脂がはぜる音を聞きながら数分。焼きたてをそのまま口へ運ぶ、それがいちばんおいしい食べ方です。"
         image="/images/churrasco-carving.jpg"
-        alt="目の前で焼きたての肉をカットする、新宿の屋上ビアガーデンのシュラスコBBQ"
+        alt="焼き上げたピッカーニャを串からその場でカットするシュラスコ"
       />
 
       <div className="bg-ivory pb-4">
@@ -139,7 +145,7 @@ export default function FoodDrinkPage() {
                 <div className="reveal-zoom relative mt-12 aspect-[4/3] overflow-hidden">
                   <Image
                     src="/images/bbq-steak-pork-platter.jpg"
-                    alt="新宿の屋上ビアガーデンで焼き上げたステーキと厚切り豚バラ、グリル野菜の盛り合わせ"
+                    alt="焼き上げたステーキと厚切り豚バラ、グリル野菜を並べたプレート"
                     fill
                     loading="lazy"
                     quality={65}
@@ -195,7 +201,7 @@ export default function FoodDrinkPage() {
               <div className="reveal-zoom relative aspect-[4/3] overflow-hidden">
                 <Image
                   src="/images/bbq-mixed-grill-platter.jpg"
-                  alt="新宿の屋上ビアガーデンの海鮮とグリル野菜、チキンやソーセージを盛り合わせたBBQプレート"
+                  alt="海老・チキン・ソーセージ・グリル野菜を盛り合わせたBBQプレート"
                   fill
                   loading="lazy"
                   quality={65}

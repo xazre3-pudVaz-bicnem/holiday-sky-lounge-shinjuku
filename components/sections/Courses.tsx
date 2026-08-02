@@ -4,7 +4,8 @@ import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { ArrowIcon } from "@/components/ui/Icons";
 import { COURSES, COURSE_NOTE, PHOTO_NOTE } from "@/data/courses";
-import { LINKS } from "@/lib/site";
+import { LINKS } from "@/lib/site-config";
+import { track } from "@/lib/analytics";
 
 const yen = (n: number) => `¥${n.toLocaleString("ja-JP")}`;
 
@@ -65,9 +66,9 @@ export default function Courses({ showAllLink = true }: { showAllLink?: boolean 
                       <span className="u-en text-[2rem] leading-none text-white lg:text-[2.4rem]">
                         {yen(c.price)}
                       </span>
-                      {c.originalPrice ? (
+                      {c.listPrice ? (
                         <span className="text-[0.8rem] text-white/45 line-through">
-                          {yen(c.originalPrice)}
+                          {yen(c.listPrice)}
                         </span>
                       ) : null}
                     </p>
@@ -94,10 +95,21 @@ export default function Courses({ showAllLink = true }: { showAllLink?: boolean 
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-7 inline-flex items-center gap-3 border-b border-sun/50 pb-1 text-[0.8rem] font-semibold tracking-[0.1em] text-sun transition-colors hover:border-sun hover:text-white"
+                    {...track("course_reservation_click", "course-card", c.name)}
                   >
                     このコースで予約する
                     <ArrowIcon className="h-3.5 w-3.5" />
                   </a>
+
+                  {c.detailPath ? (
+                    <Link
+                      href={c.detailPath}
+                      className="ml-6 mt-7 inline-flex items-center gap-3 border-b border-white/40 pb-1 text-[0.8rem] tracking-[0.06em] text-white/85 transition-colors hover:border-white hover:text-white"
+                    >
+                      {c.name}の詳細を見る
+                      <ArrowIcon className="h-3.5 w-3.5" />
+                    </Link>
+                  ) : null}
                 </div>
               </article>
             </Reveal>

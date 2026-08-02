@@ -9,25 +9,25 @@ const SEATS = [
     title: "ソファー席",
     body: "ゆったり腰を沈めて座れる、長居向きの席。少人数の飲み会に。",
     image: "/images/terrace-sofa-seat-sunset.jpg",
-    alt: "夕暮れの新宿の屋上ビアガーデンにあるソファー席とベンチシート",
+    alt: "夕暮れのテラスに置かれたソファー席とベンチシート",
   },
   {
     title: "カップルシート",
     body: "並んで街の灯りを眺められる、二人のための席。デートや記念日に。",
     image: "/images/couple-seat-round-table.jpg",
-    alt: "新宿の屋上ビアガーデンのカップルシートと丸テーブル",
+    alt: "二人で並んで座れるカップルシートの丸テーブル",
   },
   {
     title: "大人数宴会エリア",
     body: "ロングテーブルを連結して、着席250名・立食300名まで。50名以上は貸切も。",
     image: "/images/banquet-long-table-day.jpg",
-    alt: "新宿の屋上ビアガーデンで大人数の宴会に対応するロングテーブルエリア",
+    alt: "連結したロングテーブルが並ぶ宴会向けのエリア",
   },
   {
     title: "バーカウンター",
     body: "茅葺き屋根のカウンター。屋根付きなので、日差しの強い日にも。",
     image: "/images/tiki-bar-counter.jpg",
-    alt: "南国リゾート風の茅葺き屋根が印象的な新宿の屋上ビアガーデンのバーカウンター",
+    alt: "茅葺き屋根を載せた南国風のバーカウンター",
   },
 ];
 
@@ -52,7 +52,7 @@ export default function Space() {
               <div className="reveal-zoom relative aspect-[4/3] overflow-hidden">
                 <Image
                   src="/images/terrace-day-palm-umbrella.jpg"
-                  alt="青空とパラソル、ヤシの木に囲まれた昼間の新宿の屋上ビアガーデン"
+                  alt="青空とヤシの木に囲まれた昼のテラス席"
                   fill
                   loading="lazy"
                   quality={65}
@@ -74,7 +74,7 @@ export default function Space() {
               <div className="reveal-zoom relative aspect-[4/3] overflow-hidden">
                 <Image
                   src="/images/terrace-night-umbrella-lights.jpg"
-                  alt="照明が灯り夜景に包まれた新宿の屋上ビアガーデンの夜のテラス席"
+                  alt="照明が灯り街明かりに包まれた夜のテラス席"
                   fill
                   loading="lazy"
                   quality={65}
@@ -97,7 +97,7 @@ export default function Space() {
           <div className="reveal-zoom relative aspect-[16/9] overflow-hidden lg:aspect-[21/9]">
             <Image
               src="/images/rooftop-cityscape-dusk.jpg"
-              alt="新宿の街並みとビル群を見渡す、日没後の屋上ビアガーデンの夜景"
+              alt="日没後の新宿方面のビル群を見渡す屋上からの眺め"
               fill
               loading="lazy"
               quality={65}

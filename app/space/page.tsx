@@ -6,10 +6,11 @@ import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ReserveCta from "@/components/sections/ReserveCta";
 import { JsonLd } from "@/components/ui/JsonLd";
-import { breadcrumbJsonLd } from "@/lib/jsonld";
+import { breadcrumbJsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/seo";
+import { lastModifiedOf } from "@/lib/routes";
 import { ArrowIcon } from "@/components/ui/Icons";
-import { SHOP } from "@/lib/site";
+import { SHOP } from "@/lib/site-config";
 
 const CRUMBS = [
   { name: "ホーム", path: "/" },
@@ -17,12 +18,12 @@ const CRUMBS = [
 ];
 
 export const metadata = buildMetadata({
-  title: "空間・座席｜新宿の夜景を望むルーフトップテラス",
+  title: "新宿の夜景が見えるテラス席｜屋上レストランの空間紹介",
   description:
     "新宿・東新宿の屋上ビアガーデン「HOLIDAY SKY LOUNGE 新宿」の空間紹介。約300席の大型ルーフトップテラス、ソファー席、カップルシート、VIPエリア、大人数の宴会エリアまで。昼と夜で表情の変わる屋上の様子をご覧ください。",
   path: "/space",
   image: "/images/rooftop-cityscape-dusk.jpg",
-  keywords: ["新宿 テラス", "新宿 屋上レストラン", "新宿 夜景 ビアガーデン", "新宿 貸切", "新宿 デート"],
+  keywords: ["新宿 夜景 ビアガーデン", "新宿 テラス", "新宿 屋上レストラン"],
 });
 
 const AREAS = [
@@ -31,55 +32,60 @@ const AREAS = [
     title: "大型屋上テラス",
     body: "ビル1棟分の屋上をまるごと使った、仕切りのないワンフロア。約300席が同じ空の下に並びます。天然芝を思わせるグリーンの床と、赤・黄のウッドフェンス。頭上をさえぎるものがないので、視界の抜け方が屋内の店舗とはまったく違います。",
     image: "/images/terrace-day-wide.jpg",
-    alt: "約300席が広がる新宿の屋上ビアガーデンの大型ルーフトップテラス",
+    alt: "約300席が広がる大型ルーフトップテラス",
   },
   {
     en: "Green",
     title: "グリーンに囲まれたリゾート空間",
     body: "ヤシの木、吊り下げたグリーン、茅葺き屋根のバーカウンター。ハワイアンリゾートを思わせる要素を屋上に持ち込むことで、エレベーターを降りた瞬間に空気が切り替わるようにしています。植栽の緑と、ロゴにも使っている深い緑が、この場所の基調色です。",
     image: "/images/terrace-green-umbrella-day.jpg",
-    alt: "グリーンとパラソルに囲まれた新宿の屋上ビアガーデンのリゾート空間",
+    alt: "植栽とパラソルに囲まれたリゾート風のテラス",
   },
   {
     en: "Sofa",
     title: "ソファー席・カップルシート",
     body: "テラスの一角には、腰を沈めて長居できるソファー席と、二人で並んで景色を眺められるカップルシートがあります。テーブルを挟んで向かい合うのではなく、同じ方向を向いて座れるので、デートや記念日の利用に向いています。",
     image: "/images/terrace-sofa-seat-sunset.jpg",
-    alt: "夕暮れの新宿の屋上ビアガーデンにあるソファー席とベンチシート",
+    alt: "夕暮れのテラスに置かれたソファー席とベンチシート",
   },
   {
     en: "Banquet",
     title: "大人数宴会エリア・VIPルーム",
     body: "ロングテーブルを連結すれば、着席250名・立食300名まで対応できます。10〜30名向けの個室エリアや、カラオケを備えたVIPルームもご用意。50名以上のご利用なら、貸切のご相談も承っています。",
     image: "/images/banquet-long-table-day.jpg",
-    alt: "大人数の宴会や貸切に対応する新宿の屋上ビアガーデンのロングテーブルエリア",
+    alt: "連結したロングテーブルが続く大人数向けのエリア",
   },
   {
     en: "Bar",
     title: "バーカウンター",
     body: "茅葺き屋根のバーカウンターは、屋上のちょうど中心。少人数なら、ここでカウンター飲みという使い方もできます。屋根付きなので、日差しの強い時間帯の避難場所にもなります。",
     image: "/images/tiki-bar-counter.jpg",
-    alt: "茅葺き屋根が印象的な新宿の屋上ビアガーデンのバーカウンター",
+    alt: "茅葺き屋根のバーカウンターとドリンクの黒板メニュー",
   },
   {
     en: "Counter",
     title: "ハイテーブル・カウンター席",
     body: "スツールを並べたハイテーブルは、立ち飲みに近い距離感で使えます。人数が読めない二次会や、軽く一杯だけという日にも。フェンス側の席なら、街を見下ろしながら飲めます。",
     image: "/images/counter-table-stools.jpg",
-    alt: "スツールが並ぶ新宿の屋上ビアガーデンのハイテーブル・カウンター席",
+    alt: "スツールを並べたハイテーブルのカウンター席",
   },
 ];
 
 export default function SpacePage() {
   return (
     <>
-      <JsonLd data={breadcrumbJsonLd(CRUMBS)} />
+      <JsonLd
+        data={[
+          webPageJsonLd({ path: "/space", name: metadata.title as string, description: metadata.description as string, lastModified: lastModifiedOf("/space"), image: "/images/rooftop-cityscape-dusk.jpg", hasBreadcrumb: true }),
+          breadcrumbJsonLd(CRUMBS, "/space"),
+        ]}
+      />
       <PageHero
         en="Space"
         title="新宿の夜景を眺める、天空のリゾートラウンジ。"
         lead={`K-SQUAREの屋上に広がる${SHOP.seats}のワンフロア。青空の下で過ごす昼と、街の灯りに囲まれる夜。同じ席なのに、時間帯で印象がまるで変わります。`}
         image="/images/rooftop-cityscape-dusk.jpg"
-        alt="新宿の街並みを見渡す、日没後の屋上ビアガーデンの夜景"
+        alt="日没後の新宿方面を見渡す屋上テラスからの眺め"
       />
 
       <div className="bg-ivory pb-4">
@@ -105,7 +111,7 @@ export default function SpacePage() {
                 <div className="reveal-zoom relative aspect-[4/3] overflow-hidden">
                   <Image
                     src="/images/terrace-day-blue-sky.jpg"
-                    alt="青空とパラソルが広がる昼間の新宿の屋上ビアガーデン"
+                    alt="青空とパラソルが広がる昼のテラス"
                     fill
                     loading="lazy"
                     quality={65}
@@ -132,7 +138,7 @@ export default function SpacePage() {
                 <div className="reveal-zoom relative aspect-[4/3] overflow-hidden">
                   <Image
                     src="/images/terrace-night-string-lights.jpg"
-                    alt="ガーランドライトが灯る新宿の屋上ビアガーデンの夜のテラス席"
+                    alt="ガーランドライトが灯る夜のテラス席"
                     fill
                     loading="lazy"
                     quality={65}
@@ -164,7 +170,7 @@ export default function SpacePage() {
             <div className="reveal-zoom relative aspect-[16/9] overflow-hidden lg:aspect-[21/9]">
               <Image
                 src="/images/terrace-night-cityscape.jpg"
-                alt="新宿の街の灯りを見渡す屋上ビアガーデンの夜景とテラス席"
+                alt="屋上から見渡す新宿方面の街明かりとテラス席とテラス席"
                 fill
                 loading="lazy"
                 quality={65}

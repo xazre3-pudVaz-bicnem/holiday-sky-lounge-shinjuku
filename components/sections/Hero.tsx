@@ -1,6 +1,7 @@
 import Image from "next/image";
-import { ACCESS, LINKS, SHOP } from "@/lib/site";
+import { ACCESS, LINKS, SHOP } from "@/lib/site-config";
 import { ArrowIcon, InstagramIcon } from "@/components/ui/Icons";
+import { track } from "@/lib/analytics";
 
 export default function Hero() {
   return (
@@ -9,7 +10,7 @@ export default function Hero() {
       <div className="absolute inset-0">
         <Image
           src="/images/hero-rooftop-beergarden-night.jpg"
-          alt="新宿の屋上ビアガーデン HOLIDAY SKY LOUNGE 新宿、夜景とガーランドライトに包まれたルーフトップテラス"
+          alt="ガーランドライトが灯り、新宿方面のビル群を望むHOLIDAY SKY LOUNGE 新宿の屋上テラス"
           fill
           priority
           fetchPriority="high"
@@ -61,6 +62,7 @@ export default function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               className="btn bg-white text-brand-deep hover:bg-brand hover:text-white"
+              {...track("reservation_click", "hero")}
             >
               空席を確認・予約する
               <ArrowIcon className="h-4 w-4" />
@@ -70,6 +72,7 @@ export default function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-ghost-light"
+              {...track("instagram_click", "hero")}
             >
               <InstagramIcon className="h-4 w-4" />
               Instagramを見る

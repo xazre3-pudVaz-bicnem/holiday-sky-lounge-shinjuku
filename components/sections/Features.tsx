@@ -16,7 +16,7 @@ export default function Features() {
           className="max-w-3xl"
           lead="新宿の屋上で手ぶらBBQビアガーデンを楽しめる、6つの理由。"
         >
-          新宿最大級の開放的な
+          約300席の開放的な
           <br className="hidden sm:block" />
           ルーフトップテラス
         </SectionHeading>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { LINKS, SHOP } from "@/lib/site";
+import { LINKS, SHOP } from "@/lib/site-config";
 import { PinIcon } from "./Icons";
 
 /**

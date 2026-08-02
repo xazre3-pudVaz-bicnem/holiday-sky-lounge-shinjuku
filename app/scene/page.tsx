@@ -6,8 +6,9 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Scene from "@/components/sections/Scene";
 import ReserveCta from "@/components/sections/ReserveCta";
 import { JsonLd } from "@/components/ui/JsonLd";
-import { breadcrumbJsonLd } from "@/lib/jsonld";
+import { breadcrumbJsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/seo";
+import { lastModifiedOf } from "@/lib/routes";
 import { ArrowIcon } from "@/components/ui/Icons";
 import { SCENES } from "@/data/content";
 
@@ -17,12 +18,12 @@ const CRUMBS = [
 ];
 
 export const metadata = buildMetadata({
-  title: "利用シーン｜宴会・女子会・デート・貸切パーティー",
+  title: "新宿ビアガーデンの利用シーン｜宴会・女子会・デート",
   description:
     "新宿の屋上ビアガーデン「HOLIDAY SKY LOUNGE 新宿」の利用シーン。最大300名の会社宴会・歓送迎会から、女子会、デート、誕生日、家族での食事、昼飲み、貸切パーティーまで。目的別の使い方と席のご提案をまとめました。",
   path: "/scene",
   image: "/images/banquet-long-table-day.jpg",
-  keywords: ["新宿 宴会", "新宿 貸切", "新宿 女子会", "新宿 デート", "新宿 昼飲み", "新宿 ビアガーデン"],
+  keywords: ["新宿 ビアガーデン 宴会", "新宿 ビアガーデン 女子会", "新宿 ビアガーデン デート"],
 });
 
 const PARTY = [
@@ -34,13 +35,18 @@ const PARTY = [
 export default function ScenePage() {
   return (
     <>
-      <JsonLd data={breadcrumbJsonLd(CRUMBS)} />
+      <JsonLd
+        data={[
+          webPageJsonLd({ path: "/scene", name: metadata.title as string, description: metadata.description as string, lastModified: lastModifiedOf("/scene"), image: "/images/banquet-long-table-day.jpg", hasBreadcrumb: true }),
+          breadcrumbJsonLd(CRUMBS, "/scene"),
+        ]}
+      />
       <PageHero
         en="Scene"
         title="宴会も、女子会も、デートも。同じ屋上で。"
         lead="仕切りのないワンフロアだからこそ、集まる人数と目的に合わせて自由に組み替えられます。10名の部署飲みから300名規模のパーティーまで、目的別の使い方をご紹介します。"
         image="/images/banquet-long-table-day.jpg"
-        alt="新宿の屋上ビアガーデンで宴会に使われるロングテーブルのエリア"
+        alt="宴会で使うロングテーブルを並べたエリア"
       />
 
       <div className="bg-ivory pb-4">

@@ -1,17 +1,17 @@
 import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
 import { ArrowIcon, InstagramIcon } from "@/components/ui/Icons";
-import { LINKS } from "@/lib/site";
+import { LINKS } from "@/lib/site-config";
 
 /**
  * 公式Instagramへの導線。
  * 投稿の直接スクレイピングは行わず、public配下の写真＋公式アカウントへのリンクで構成。
  */
 const SHOTS = [
-  { src: "/images/cheers-corona-mural.jpg", alt: "HOLIDAYの壁画の前でボトルビールを合わせて乾杯する屋上ビアガーデン" },
-  { src: "/images/terrace-holiday-sign-sunset.jpg", alt: "夕暮れのHOLIDAYサインが並ぶ新宿の屋上ビアガーデンのテラス" },
+  { src: "/images/cheers-corona-mural.jpg", alt: "HOLIDAYの壁画を背景にボトルビールで乾杯する手元" },
+  { src: "/images/terrace-holiday-sign-sunset.jpg", alt: "夕暮れにHOLIDAYのサインとヤシの木が並ぶテラス" },
   { src: "/images/corona-ice-bucket-palm.jpg", alt: "ヤシの木を背景にアイスバケットで冷やされたボトルビール" },
-  { src: "/images/terrace-dusk-lights.jpg", alt: "日没後に照明が灯る新宿の屋上ビアガーデンのテーブル席" },
+  { src: "/images/terrace-dusk-lights.jpg", alt: "日没後に照明が灯りはじめたテーブル席" },
 ];
 
 export default function InstagramSection() {

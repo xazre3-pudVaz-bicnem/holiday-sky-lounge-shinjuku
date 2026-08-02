@@ -5,12 +5,13 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Courses from "@/components/sections/Courses";
 import ReserveCta from "@/components/sections/ReserveCta";
 import { JsonLd } from "@/components/ui/JsonLd";
-import { breadcrumbJsonLd } from "@/lib/jsonld";
+import { breadcrumbJsonLd, courseItemListJsonLd, menuJsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/seo";
+import { lastModifiedOf } from "@/lib/routes";
 import { COURSE_NOTE, OTHER_PLANS } from "@/data/courses";
 import { STEPS } from "@/data/content";
 import { ArrowIcon } from "@/components/ui/Icons";
-import { LINKS } from "@/lib/site";
+import { LINKS } from "@/lib/site-config";
 
 const CRUMBS = [
   { name: "ホーム", path: "/" },
@@ -18,12 +19,12 @@ const CRUMBS = [
 ];
 
 export const metadata = buildMetadata({
-  title: "BBQコース・飲み放題プラン｜新宿の屋上ビアガーデン",
+  title: "新宿のビアガーデンBBQコース一覧｜手ぶら・飲み放題付き",
   description:
     "新宿の屋上ビアガーデン「HOLIDAY SKY LOUNGE 新宿」のBBQコース一覧。肉と海鮮のスタンダードBBQ（全13品・2時間飲み放題付 ¥3,980）、韓国BBQ、ブラックアンガス牛のアメリカンBBQ、シュラスコBBQ、ランチ限定コースまで。すべて手ぶらでご利用いただけます。",
   path: "/course",
   image: "/images/american-bbq-beef-platter.jpg",
-  keywords: ["新宿 BBQ", "新宿 手ぶらBBQ", "新宿 飲み放題", "新宿 ビアガーデン コース", "新宿 バーベキュー"],
+  keywords: ["新宿 ビアガーデン BBQ", "新宿 手ぶらBBQ", "新宿 BBQ 飲み放題", "新宿 ビアガーデン コース"],
 });
 
 const yen = (n: number) => `¥${n.toLocaleString("ja-JP")}`;
@@ -31,13 +32,20 @@ const yen = (n: number) => `¥${n.toLocaleString("ja-JP")}`;
 export default function CoursePage() {
   return (
     <>
-      <JsonLd data={breadcrumbJsonLd(CRUMBS)} />
+      <JsonLd
+        data={[
+          webPageJsonLd({ path: "/course", name: metadata.title as string, description: metadata.description as string, lastModified: lastModifiedOf("/course"), image: "/images/american-bbq-beef-platter.jpg", hasBreadcrumb: true }),
+          breadcrumbJsonLd(CRUMBS, "/course"),
+          menuJsonLd(),
+          courseItemListJsonLd(),
+        ]}
+      />
       <PageHero
         en="BBQ Course"
         title="肉と海鮮を味わう、手ぶらのWORLD BBQコース"
         lead="アメリカン、韓国、ブラジリアン。同じ屋上で、その日の気分に合わせて世界のBBQスタイルを選べます。食材・機材・後片付けまで込みなので、身ひとつでお越しください。"
         image="/images/bbq-long-table-grill.jpg"
-        alt="新宿の屋上ビアガーデンでBBQコースを楽しむグリル付きのロングテーブル"
+        alt="グリルをセットしたロングテーブルとスツールが並ぶ屋上の席"
       />
 
       <div className="bg-ivory pb-4">
@@ -100,9 +108,9 @@ export default function CoursePage() {
                   </div>
                   <p className="flex items-baseline gap-3 sm:justify-end">
                     <span className="u-en text-[1.5rem] leading-none text-brand">{yen(p.price)}</span>
-                    {"originalPrice" in p && p.originalPrice ? (
+                    {"listPrice" in p && p.listPrice ? (
                       <span className="text-[0.76rem] text-ink-soft line-through">
-                        {yen(p.originalPrice)}
+                        {yen(p.listPrice)}
                       </span>
                     ) : null}
                   </p>

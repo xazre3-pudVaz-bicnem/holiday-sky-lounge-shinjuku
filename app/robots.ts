@@ -1,10 +1,18 @@
 import type { MetadataRoute } from "next";
-import { SITE_URL } from "@/lib/site";
+import { siteConfig } from "@/lib/site-config";
+
+/** プレビュー環境ではクロールさせない */
+const NOINDEX = process.env.NEXT_PUBLIC_NOINDEX === "true";
 
 export default function robots(): MetadataRoute.Robots {
+  if (NOINDEX) {
+    return { rules: { userAgent: "*", disallow: "/" } };
+  }
+
   return {
-    rules: [{ userAgent: "*", allow: "/" }],
-    sitemap: `${SITE_URL}/sitemap.xml`,
-    host: SITE_URL,
+    // CSS・JS・画像はブロックしない（レンダリング評価に必要なため）
+    rules: { userAgent: "*", allow: "/" },
+    sitemap: `${siteConfig.url}/sitemap.xml`,
+    host: siteConfig.url,
   };
 }

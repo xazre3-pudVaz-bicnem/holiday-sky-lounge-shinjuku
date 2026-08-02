@@ -6,8 +6,9 @@ import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ReserveCta from "@/components/sections/ReserveCta";
 import { JsonLd } from "@/components/ui/JsonLd";
-import { breadcrumbJsonLd } from "@/lib/jsonld";
+import { breadcrumbJsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/seo";
+import { lastModifiedOf } from "@/lib/routes";
 import { ArrowIcon } from "@/components/ui/Icons";
 
 const CRUMBS = [
@@ -16,12 +17,12 @@ const CRUMBS = [
 ];
 
 export const metadata = buildMetadata({
-  title: "コンセプト｜新宿の屋上に広がるリゾート型ビアガーデン",
+  title: "新宿の屋上ルーフトップビアガーデンのコンセプト",
   description:
     "新宿・東新宿のK-SQUARE屋上にある「HOLIDAY SKY LOUNGE 新宿」のコンセプト。約300席のルーフトップテラス、ハワイアンリゾートを思わせる空間、準備不要の手ぶらBBQ。昼から夜まで楽しめる新宿のビアガーデンです。",
   path: "/concept",
   image: "/images/concept-sunset-palm-sign.jpg",
-  keywords: ["新宿 ビアガーデン", "新宿 屋上ビアガーデン", "新宿 テラス", "新宿 屋上レストラン"],
+  keywords: ["新宿 屋上ビアガーデン", "新宿 ルーフトップ", "新宿 屋上 テラス"],
 });
 
 const PILLARS = [
@@ -30,41 +31,46 @@ const PILLARS = [
     title: "頭上に、何もない。",
     body: "屋内のダイニングでは味わえないのが、空の広さです。テラスに出た瞬間に視界が開けて、ビルの間を抜けてきた風がそのまま届く。同じビールでも、屋根の下で飲むのとは味が変わります。約300席のワンフロアすべてが、この開放感の上に成り立っています。",
     image: "/images/terrace-dusk-panorama.jpg",
-    alt: "頭上に遮るもののない、新宿の屋上ビアガーデンの開放的なテラス全景",
+    alt: "頭上に遮るもののない開放的なテラスの全景",
   },
   {
     en: "Resort",
     title: "新宿にいながら、遠くへ。",
     body: "ヤシの木、茅葺き屋根のバーカウンター、緑の床、そして日が落ちてから灯るガーランドライト。ハワイアンリゾートを思わせる要素を屋上に持ち込むことで、エレベーターを降りた瞬間に「いつもの新宿」から切り離されるようにしています。旅に出なくても、休日の空気だけは味わえます。",
     image: "/images/tiki-bar-counter.jpg",
-    alt: "南国リゾートを思わせる茅葺き屋根のバーカウンターがある新宿の屋上ビアガーデン",
+    alt: "茅葺き屋根とドリンクメニューの黒板が並ぶバーカウンター",
   },
   {
     en: "Hands Free",
     title: "準備は、こちらで。",
     body: "BBQのいちばん楽しい部分は、火を囲んで焼いている時間です。買い出しも、炭起こしも、後片付けも、その時間を削るだけ。だから全部こちらで引き受けます。お客様がするのは、席について、焼いて、乾杯すること。それだけです。",
     image: "/images/bbq-grill-table-day.jpg",
-    alt: "手ぶらで楽しめるようグリルがセットされた新宿の屋上ビアガーデンのテーブル",
+    alt: "着席するとすぐ焼き始められるようグリルを備えたテーブル",
   },
   {
     en: "For Everyone",
     title: "気取らず、上質に。",
     body: "屋上のリゾートラウンジでありながら、50名の会社宴会も、二人だけの記念日も、同じフロアで成立させたいと考えています。ドレスコードはありません。仕事帰りのスーツでも、Tシャツでも。上質な景色と、気楽に過ごせる空気。その両方を残すことを、この場所の基準にしています。",
     image: "/images/terrace-night-party-tables.jpg",
-    alt: "会社宴会から少人数の飲み会まで対応する新宿の屋上ビアガーデンの夜のテラス席",
+    alt: "照明が灯る夜のテラスに並んだテーブル席",
   },
 ];
 
 export default function ConceptPage() {
   return (
     <>
-      <JsonLd data={breadcrumbJsonLd(CRUMBS)} />
+      <JsonLd
+        data={[
+          webPageJsonLd({ path: "/concept", name: metadata.title as string, description: metadata.description as string, lastModified: lastModifiedOf("/concept"), image: "/images/concept-sunset-palm-sign.jpg", hasBreadcrumb: true }),
+          breadcrumbJsonLd(CRUMBS, "/concept"),
+        ]}
+      />
       <PageHero
         en="Concept"
         title="新宿にいながら、南国リゾートのようなひとときを。"
         lead="エレベーターの扉が開くと、そこはビルの屋上。ヤシの木とガーランドライトに囲まれた約300席のテラスが広がります。新宿の空の下で過ごす、少しだけ非日常な時間について。"
         image="/images/concept-sunset-palm-sign.jpg"
-        alt="夕暮れの空の下、ヤシの木とHOLIDAYのサインが並ぶ新宿の屋上ビアガーデン"
+        alt="夕暮れの空とヤシの木、HOLIDAYのサインが並ぶテラス"
       />
 
       <div className="bg-ivory pb-4">

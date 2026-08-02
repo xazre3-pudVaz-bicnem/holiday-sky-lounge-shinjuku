@@ -4,7 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { LINKS, NAV, SHOP, ACCESS } from "@/lib/site";
+import { LINKS, NAV, SHOP, ACCESS } from "@/lib/site-config";
+import { track } from "@/lib/analytics";
 import { ArrowIcon, ClockIcon, InstagramIcon, PinIcon } from "@/components/ui/Icons";
 
 export default function Header() {
@@ -130,6 +131,7 @@ export default function Header() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="HOLIDAY SKY LOUNGE 新宿の公式Instagramを見る（新しいタブで開きます）"
+              {...track("instagram_click", "header")}
               className={`hidden h-11 w-11 items-center justify-center rounded-full border transition-colors sm:flex ${
                 overlay
                   ? "border-white/50 text-white hover:bg-white hover:text-brand-deep"
@@ -243,6 +245,7 @@ export default function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-primary w-full"
+                {...track("reservation_click", "mobile-menu")}
               >
                 空席を確認・予約する
                 <ArrowIcon className="h-4 w-4" />
@@ -252,6 +255,7 @@ export default function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-outline w-full"
+                {...track("instagram_click", "mobile-menu")}
               >
                 <InstagramIcon className="h-4 w-4" />
                 Instagramを見る

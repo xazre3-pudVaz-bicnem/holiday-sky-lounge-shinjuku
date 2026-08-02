@@ -4,9 +4,10 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import FixedCta from "@/components/layout/FixedCta";
+import Analytics from "@/components/analytics/Analytics";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { restaurantJsonLd, websiteJsonLd } from "@/lib/jsonld";
-import { SHOP, SITE_URL } from "@/lib/site";
+import { siteConfig } from "@/lib/site-config";
 
 /**
  * 欧文のみWebフォント（latin subsetのみ・軽量）。
@@ -19,50 +20,42 @@ const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
 });
 
+const PREVIEW_NOINDEX = process.env.NEXT_PUBLIC_NOINDEX === "true";
+
+const HOME_TITLE = "新宿のビアガーデン・屋上手ぶらBBQ";
+
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
+  // ドメインは siteConfig 経由。環境変数を変えるだけで全URLが切り替わる。
+  metadataBase: new URL(siteConfig.url),
   title: {
-    default: "新宿のビアガーデン・手ぶらBBQ｜HOLIDAY SKY LOUNGE 新宿",
-    template: `%s｜${SHOP.name}`,
+    default: `${HOME_TITLE}｜${siteConfig.name}`,
+    template: `%s｜${siteConfig.name}`,
   },
-  description:
-    "新宿・東新宿の屋上ビアガーデン「HOLIDAY SKY LOUNGE 新宿」。夜景を望む開放的なテラスで、ブラックアンガス牛や海鮮の手ぶらBBQ、飲み放題を楽しめます。宴会、女子会、デート、貸切にも対応。",
-  keywords: [
-    "新宿 ビアガーデン",
-    "新宿 屋上ビアガーデン",
-    "新宿 BBQ",
-    "新宿 手ぶらBBQ",
-    "新宿 飲み放題",
-    "新宿 テラス",
-    "東新宿 ビアガーデン",
-    "新大久保 ビアガーデン",
-    "新宿 宴会",
-    "新宿 貸切",
-  ],
-  applicationName: SHOP.name,
-  alternates: { canonical: SITE_URL },
+  description: siteConfig.description,
+  applicationName: siteConfig.name,
+  alternates: { canonical: siteConfig.url },
   openGraph: {
     type: "website",
-    locale: "ja_JP",
-    siteName: SHOP.name,
-    url: SITE_URL,
-    title: "新宿のビアガーデン・手ぶらBBQ｜HOLIDAY SKY LOUNGE 新宿",
-    description:
-      "新宿・東新宿の屋上ビアガーデン。夜景を望むテラスで、ブラックアンガス牛や海鮮の手ぶらBBQと飲み放題を。宴会・女子会・デート・貸切にも対応。",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: SHOP.name }],
+    locale: siteConfig.locale,
+    siteName: siteConfig.name,
+    url: siteConfig.url,
+    title: `${HOME_TITLE}｜${siteConfig.name}`,
+    description: siteConfig.description,
+    images: [{ url: siteConfig.defaultOgImage, width: 1200, height: 630, alt: siteConfig.name }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "新宿のビアガーデン・手ぶらBBQ｜HOLIDAY SKY LOUNGE 新宿",
-    description:
-      "新宿・東新宿の屋上ビアガーデン。夜景を望むテラスで手ぶらBBQと飲み放題を。",
-    images: ["/og-image.jpg"],
+    title: `${HOME_TITLE}｜${siteConfig.name}`,
+    description: siteConfig.description,
+    images: [siteConfig.defaultOgImage],
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
-  },
+  robots: PREVIEW_NOINDEX
+    ? { index: false, follow: false }
+    : {
+        index: true,
+        follow: true,
+        googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
+      },
   formatDetection: { telephone: false },
 };
 
@@ -75,13 +68,15 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ja" className={cormorant.variable}>
+    <html lang={siteConfig.lang} className={cormorant.variable}>
       <body>
+        {/* 店舗・サイト本体の構造化データは全ページ共通（@idで各ページから参照する） */}
         <JsonLd data={[restaurantJsonLd(), websiteJsonLd()]} />
         <Header />
         <main id="main">{children}</main>
         <Footer />
         <FixedCta />
+        <Analytics />
       </body>
     </html>
   );

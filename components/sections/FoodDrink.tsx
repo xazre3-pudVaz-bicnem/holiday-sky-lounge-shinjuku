@@ -51,7 +51,7 @@ export default function FoodDrink() {
               <div className="reveal-zoom relative mt-12 aspect-[4/5] overflow-hidden">
                 <Image
                   src="/images/charcoal-grilled-steak.jpg"
-                  alt="炭火のグリルで焼き上げる、新宿の屋上ビアガーデンのステーキ"
+                  alt="炭火のグリルで表面を焼き上げているステーキ"
                   fill
                   loading="lazy"
                   quality={65}
@@ -110,7 +110,7 @@ export default function FoodDrink() {
               <div className="reveal-zoom relative aspect-[4/3] overflow-hidden md:aspect-[3/4]">
                 <Image
                   src="/images/cocktails-lineup.jpg"
-                  alt="新宿の屋上ビアガーデンで提供されるトロピカルカクテル6種が並ぶテーブル"
+                  alt="色とりどりのトロピカルカクテルが6杯並んだテーブル"
                   fill
                   loading="lazy"
                   quality={65}
@@ -123,7 +123,7 @@ export default function FoodDrink() {
               <div className="reveal-zoom relative aspect-[16/10] overflow-hidden md:aspect-auto md:h-full">
                 <Image
                   src="/images/cheers-beer-mug.jpg"
-                  alt="よく冷えた生ビールのジョッキを合わせて乾杯する新宿の屋上ビアガーデン"
+                  alt="泡の立った生ビールのジョッキを合わせて乾杯する手元"
                   fill
                   loading="lazy"
                   quality={65}

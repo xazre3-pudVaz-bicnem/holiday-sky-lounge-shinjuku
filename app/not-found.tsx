@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { NAV, LINKS } from "@/lib/site";
-import { ArrowIcon } from "@/components/ui/Icons";
+import { NAV, LINKS } from "@/lib/site-config";
+import { ArrowIcon, InstagramIcon } from "@/components/ui/Icons";
 
 export const metadata: Metadata = {
   title: "お探しのページが見つかりません",
@@ -40,14 +40,26 @@ export default function NotFound() {
             トップページへ戻る
             <ArrowIcon className="h-4 w-4" />
           </Link>
-          <a
-            href={LINKS.reserve}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-ghost-light"
-          >
+          <a href={LINKS.reserve} target="_blank" rel="noopener noreferrer" className="btn btn-ghost-light">
             空席を確認・予約する
           </a>
+          <a href={LINKS.instagram} target="_blank" rel="noopener noreferrer" className="btn btn-ghost-light">
+            <InstagramIcon className="h-4 w-4" />
+            Instagramを見る
+          </a>
+        </div>
+
+        <div className="mx-auto mt-12 grid max-w-2xl gap-4 sm:grid-cols-3">
+          {[
+            { href: "/course", label: "BBQコース", note: "料金と品数" },
+            { href: "/shinjuku-bbq", label: "新宿の手ぶらBBQ", note: "何が含まれるか" },
+            { href: "/access", label: "アクセス", note: "東新宿駅 徒歩2分" },
+          ].map((c) => (
+            <Link key={c.href} href={c.href} className="border border-white/25 px-5 py-4 text-left transition-colors hover:border-white/60">
+              <span className="block text-[0.9rem] text-white">{c.label}</span>
+              <span className="mt-1 block text-[0.75rem] text-white/60">{c.note}</span>
+            </Link>
+          ))}
         </div>
 
         <nav aria-label="サイト内のご案内" className="mt-14">

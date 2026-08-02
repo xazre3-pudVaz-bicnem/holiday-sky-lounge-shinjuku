@@ -6,11 +6,12 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Faq from "@/components/sections/Faq";
 import ReserveCta from "@/components/sections/ReserveCta";
 import { JsonLd } from "@/components/ui/JsonLd";
-import { breadcrumbJsonLd, faqJsonLd } from "@/lib/jsonld";
+import { breadcrumbJsonLd, faqJsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/seo";
+import { lastModifiedOf } from "@/lib/routes";
 import { FAQS } from "@/data/content";
 import { ArrowIcon } from "@/components/ui/Icons";
-import { SHOP } from "@/lib/site";
+import { SHOP } from "@/lib/site-config";
 
 const CRUMBS = [
   { name: "ホーム", path: "/" },
@@ -18,24 +19,30 @@ const CRUMBS = [
 ];
 
 export const metadata = buildMetadata({
-  title: "よくあるご質問｜予約・雨天時・持ち込み・貸切について",
+  title: "新宿ビアガーデンのよくある質問｜雨天・予約・持ち込み",
   description:
     "新宿の屋上ビアガーデン「HOLIDAY SKY LOUNGE 新宿」へよくいただくご質問。予約方法、当日予約、雨天時の対応、お子様連れ、食材の持ち込み、大人数の貸切、喫煙、支払い方法、最寄り駅などにお答えします。",
   path: "/faq",
   image: "/images/terrace-dusk-lights.jpg",
-  keywords: ["新宿 ビアガーデン 予約", "新宿 BBQ 持ち込み", "新宿 ビアガーデン 雨", "新宿 貸切"],
+  keywords: ["新宿 ビアガーデン 雨", "新宿 ビアガーデン 予約", "新宿 BBQ 持ち込み"],
 });
 
 export default function FaqPage() {
   return (
     <>
-      <JsonLd data={[breadcrumbJsonLd(CRUMBS), faqJsonLd(FAQS)]} />
+      <JsonLd
+        data={[
+          webPageJsonLd({ path: "/faq", name: metadata.title as string, description: metadata.description as string, lastModified: lastModifiedOf("/faq"), image: "/images/terrace-dusk-lights.jpg", hasBreadcrumb: true }),
+          breadcrumbJsonLd(CRUMBS, "/faq"),
+          faqJsonLd(FAQS, "/faq"),
+        ]}
+      />
       <PageHero
         en="FAQ"
         title="ご来店前によくいただくご質問"
         lead="予約方法から雨天時の対応、持ち込みや貸切まで。お問い合わせの多い内容をまとめました。ここに載っていないことは、お気軽に店舗までお尋ねください。"
         image="/images/terrace-dusk-lights.jpg"
-        alt="日没後に照明が灯る新宿の屋上ビアガーデンのテーブル席"
+        alt="日没後に照明が灯りはじめたテーブル席"
       />
 
       <div className="bg-ivory pb-4">

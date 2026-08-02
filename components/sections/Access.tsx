@@ -2,7 +2,8 @@ import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import MapEmbed from "@/components/ui/MapEmbed";
 import { ArrowIcon, PinIcon } from "@/components/ui/Icons";
-import { ACCESS, LINKS, SHOP } from "@/lib/site";
+import { ACCESS, LINKS, SHOP } from "@/lib/site-config";
+import { track } from "@/lib/analytics";
 
 export default function Access() {
   return (
@@ -94,6 +95,7 @@ export default function Access() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-primary"
+                  {...track("reservation_click", "access-section")}
                 >
                   空席を確認・予約する
                   <ArrowIcon className="h-4 w-4" />
@@ -103,6 +105,7 @@ export default function Access() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-outline"
+                  {...track("map_click", "access-section")}
                 >
                   <PinIcon className="h-4 w-4" />
                   Googleマップで開く

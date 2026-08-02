@@ -3,7 +3,7 @@ import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { ArrowIcon } from "@/components/ui/Icons";
 import { STEPS } from "@/data/content";
-import { LINKS, SHOP } from "@/lib/site";
+import { LINKS, SHOP } from "@/lib/site-config";
 
 export default function FirstTime() {
   return (
@@ -24,7 +24,7 @@ export default function FirstTime() {
               <div className="reveal-zoom relative mt-12 aspect-[4/3] overflow-hidden">
                 <Image
                   src="/images/terrace-day-entrance.jpg"
-                  alt="新宿・大久保のK-SQUARE屋上にあるビアガーデンの入口付近のテラス"
+                  alt="K-SQUARE屋上の入口付近から見たテラス"
                   fill
                   loading="lazy"
                   quality={65}
