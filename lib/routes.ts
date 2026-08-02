@@ -50,6 +50,9 @@ export const ROUTES: Route[] = [
   { path: "/guide/large-group-checklist", lastModified: "2026-08-02", changeFrequency: "monthly", priority: 0.6, primaryKeywords: ["宴会 幹事 チェックリスト", "新宿 大人数 宴会 準備"] },
   { path: "/guide/best-time-for-night-view", lastModified: "2026-08-02", changeFrequency: "monthly", priority: 0.6, primaryKeywords: ["新宿 夜景 ビアガーデン 時間", "ブルーアワー 屋上"] },
 
+  // --- ブログ（記事とカテゴリは content/blog から sitemap.ts が動的に追加） ---
+  { path: "/blog", lastModified: "2026-08-02", changeFrequency: "weekly", priority: 0.6, primaryKeywords: ["新宿 ビアガーデン ブログ"] },
+
   // --- 情報ページ ---
   { path: "/info", lastModified: "2026-08-02", changeFrequency: "monthly", priority: 0.4, primaryKeywords: ["HOLIDAY SKY LOUNGE 新宿 店舗情報"] },
   { path: "/privacy", lastModified: "2026-08-02", changeFrequency: "yearly", priority: 0.2, primaryKeywords: [] },

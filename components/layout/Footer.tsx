@@ -16,6 +16,7 @@ const PURPOSE_LINKS = [
   { href: "/area/higashi-shinjuku", label: "東新宿エリア" },
   { href: "/area/shin-okubo", label: "新大久保エリア" },
   { href: "/guide", label: "利用ガイド" },
+  { href: "/blog", label: "ブログ" },
 ] as const;
 
 export default function Footer() {
@@ -76,6 +77,12 @@ export default function Footer() {
                 <Link href="/faq" className="inline-block py-1 transition-colors hover:text-white">
                   <span className="u-en text-[0.72rem] text-white/60">FAQ</span>
                   <span className="ml-3">よくある質問</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog" className="inline-block py-1 transition-colors hover:text-white">
+                  <span className="u-en text-[0.72rem] text-white/60">BLOG</span>
+                  <span className="ml-3">ブログ</span>
                 </Link>
               </li>
             </ul>

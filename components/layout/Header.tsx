@@ -236,6 +236,12 @@ export default function Header() {
                     <span className="text-[0.72rem] tracking-[0.15em] text-ink-soft">よくある質問</span>
                   </Link>
                 </li>
+                <li className="border-b border-line">
+                  <Link href="/blog" onClick={close} className="flex items-baseline justify-between gap-4 py-4">
+                    <span className="u-en text-[0.82rem] text-ink">BLOG</span>
+                    <span className="text-[0.72rem] tracking-[0.15em] text-ink-soft">ブログ</span>
+                  </Link>
+                </li>
               </ul>
             </nav>
 

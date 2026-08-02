@@ -1,0 +1,96 @@
+name: 毎日のブログ自動投稿
+
+on:
+  schedule:
+    # 11:40 JST = 02:40 UTC（GitHub Actions の cron は UTC 基準）
+    - cron: "40 2 * * *"
+  workflow_dispatch:
+
+# main へ直接コミットするため書き込み権限を付与する
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-blog
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    name: 記事を生成して main へ push
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: リポジトリを取得
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Node.js をセットアップ
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: 依存関係をインストール
+        run: npm ci
+
+      - name: 使用モデルを表示
+        run: |
+          MODEL="${ANTHROPIC_MODEL:-claude-haiku-4-5-20251001}"
+          echo "使用モデル: $MODEL"
+          echo "### 使用モデル: \`$MODEL\`" >> "$GITHUB_STEP_SUMMARY"
+        env:
+          ANTHROPIC_MODEL: ${{ vars.ANTHROPIC_MODEL }}
+
+      - name: 記事を生成
+        id: generate
+        run: npx tsx scripts/generate-daily-post.ts
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # 未設定ならスクリプト側の既定（Haiku）が使われる
+          ANTHROPIC_MODEL: ${{ vars.ANTHROPIC_MODEL }}
+
+      - name: ビルドが通るか確認
+        run: npm run build
+
+      - name: main へコミットして push
+        id: push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add content/blog
+
+          if git diff --cached --quiet; then
+            echo "変更がないため、コミットせずに終了します。"
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "--- コミット対象 ---"
+          git diff --cached --name-only
+
+          git commit \
+            -m "ブログ記事を自動投稿: ${{ steps.generate.outputs.title }}" \
+            -m "生成ファイル: ${{ steps.generate.outputs.file }}" \
+            -m "使用モデル: ${{ steps.generate.outputs.model }}"
+
+          git push origin main
+          echo "pushed=true" >> "$GITHUB_OUTPUT"
+          echo "push しました。Vercel のGit連携により自動でデプロイされます。"
+
+      - name: 実行結果のサマリ
+        if: always()
+        run: |
+          {
+            echo "### 実行結果"
+            echo ""
+            echo "| 項目 | 内容 |"
+            echo "| --- | --- |"
+            echo "| 生成ファイル | \`${{ steps.generate.outputs.file || '（生成なし）' }}\` |"
+            echo "| タイトル | ${{ steps.generate.outputs.title || '-' }} |"
+            echo "| 使用モデル | \`${{ steps.generate.outputs.model || '-' }}\` |"
+            echo "| push | ${{ steps.push.outputs.pushed == 'true' && '実行済み' || 'なし（変更なし）' }} |"
+          } >> "$GITHUB_STEP_SUMMARY"
