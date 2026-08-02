@@ -44,6 +44,11 @@ jobs:
         env:
           ANTHROPIC_MODEL: ${{ vars.ANTHROPIC_MODEL }}
 
+      # 検証ロジックが厳しすぎて「何を書いても不合格」になる事故を防ぐ。
+      # APIを呼ぶ前に走らせるので、壊れていればトークンを消費せず落ちる。
+      - name: 検証ロジックの回帰テスト
+        run: npx tsx scripts/test-validate.ts
+
       - name: 記事を生成
         id: generate
         run: npx tsx scripts/generate-daily-post.ts

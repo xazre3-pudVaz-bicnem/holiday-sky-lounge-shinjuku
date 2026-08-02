@@ -15,13 +15,14 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 import Anthropic from "@anthropic-ai/sdk";
 import { getAllPosts, BLOG_DIR, CATEGORIES } from "../lib/blog";
 import { SHOP, LINKS } from "../lib/site-config";
 
 const DEFAULT_MODEL = "claude-haiku-4-5-20251001";
 const MODEL = process.env.ANTHROPIC_MODEL?.trim() || DEFAULT_MODEL;
-const MAX_ATTEMPTS = 3;
+const MAX_ATTEMPTS = 4;
 
 /* ------------------------------------------------------------------ *
  * トピックプール
@@ -116,8 +117,9 @@ const SYSTEM_PROMPT = `あなたは、東京・新宿の屋上ビアガーデン
 ## 絶対に守ること
 1. **具体的な金額を書かない。**「〇〇円」「〇〇円から」などの数値表現は一切使わない。料金に触れるときは
    「コースの料金は予約ページでご確認ください」のように案内し、内部リンク /course へ誘導する。
-2. **具体的な時刻を書かない。**「11:30」「23:45」のような時刻表記や、ラストオーダーの時刻を書かない。
-   営業時間に触れるときは /access への内部リンクで案内する。
+2. **具体的な時刻を書かない。**「11:30」のような時刻表記、「23時45分まで」のような表現、
+   ラストオーダーの時刻を書かない。営業時間に触れるときは /access への内部リンクで案内する。
+   （「ラストオーダーの時間は公式ページでご確認ください」のように、時刻を伴わない言及は問題ない）
 3. **品数・人数・席数の具体的な数値を新たに作らない。**「約300席」「大人数」程度の表現にとどめる。
 4. 根拠のない優位性を書かない。「新宿で一番」「No.1」「最安」「必ず満足」「絶対」「日本一」「唯一無二」
    「究極」「最高の体験」などは使用禁止。
@@ -190,7 +192,7 @@ const BANNED_WORDS = [
   "いかがでしたか", "間違いなし",
 ];
 
-function validate(g: Generated, existingSlugs: string[]): string[] {
+export function validate(g: Generated, existingSlugs: string[]): string[] {
   const errs: string[] = [];
   const body = g.body ?? "";
   const plain = body.replace(/\s/g, "");
@@ -210,10 +212,14 @@ function validate(g: Generated, existingSlugs: string[]): string[] {
   if (h2 < 3) errs.push(`H2が少ない: ${h2}個`);
   if (!/^##\s*まとめ/m.test(body)) errs.push("「まとめ」のH2がない");
 
-  // 断定してはいけない数値
+  // 断定してはいけない数値。
+  // ※ 店名に "LOUNGE" が含まれるため、L.O. はドットを必須にして誤検知を避ける。
   if (/\d[\d,]*\s*円/.test(body)) errs.push("本文に金額が含まれている");
-  if (/\d{1,2}\s*[:：]\s*\d{2}/.test(body)) errs.push("本文に時刻が含まれている");
-  if (/L\.?O\.?/i.test(body)) errs.push("本文にラストオーダー表記が含まれている");
+  if (/\d{1,2}\s*[:：]\s*\d{2}/.test(body)) errs.push("本文に時刻（00:00形式）が含まれている");
+  if (/\d{1,2}\s*時(\s*\d{1,2}\s*分|半)?(から|まで|より|に開店|に閉店)/.test(body))
+    errs.push("本文に具体的な時刻が含まれている");
+  if (/L\s*\.\s*O\s*\.?\s*[はがを:：]?\s*\d/i.test(body))
+    errs.push("本文にラストオーダーの時刻が含まれている");
 
   for (const w of BANNED_WORDS) if (body.includes(w)) errs.push(`禁止表現: ${w}`);
 
@@ -342,7 +348,14 @@ async function main() {
   }
 }
 
-main().catch((e) => {
-  console.error(e);
-  process.exit(1);
-});
+// 直接実行されたときだけ生成を走らせる（validate をテストから import できるようにするため）
+const invokedDirectly =
+  process.argv[1] !== undefined &&
+  import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href;
+
+if (invokedDirectly) {
+  main().catch((e) => {
+    console.error(e);
+    process.exit(1);
+  });
+}
