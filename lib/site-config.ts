@@ -11,7 +11,16 @@
  *   確認できないものは書かない。出典は SOURCES、最終確認日は LAST_VERIFIED を参照。
  */
 
-const RAW_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://holiday-sky-lounge-shinjuku.vercel.app";
+/**
+ * 本番ドメイン。www あり・https に統一する。
+ * 環境変数が未設定でも正しいURLになるよう、既定値に本番ドメインを入れている。
+ */
+export const PRODUCTION_URL = "https://www.holidayskylounge.jp";
+
+/** 旧ドメイン（Vercelの自動割当）。ここからは308で PRODUCTION_URL へ転送する。 */
+export const LEGACY_HOST = "holiday-sky-lounge-shinjuku.vercel.app";
+
+const RAW_URL = process.env.NEXT_PUBLIC_SITE_URL ?? PRODUCTION_URL;
 
 /** 末尾スラッシュを除去してURLの表記を1つに固定する */
 const normalize = (u: string) => u.replace(/\/+$/, "");
