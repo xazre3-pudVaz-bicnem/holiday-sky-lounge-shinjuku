@@ -246,6 +246,11 @@ export default function CompanyPartyPage() {
         lead="貸切や、ほかの利用シーンを検討している方はこちらもご覧ください。"
         items={[
           {
+            href: "/",
+            label: "新宿のビアガーデン HOLIDAY SKY LOUNGE 新宿のトップページ",
+            description: "約300席の屋上テラス、手ぶらBBQのコース、アクセスまでをまとめて確認できます。",
+          },
+          {
             href: "/scene/private-party",
             label: "新宿の屋上を貸切にしてパーティーを開く",
             description: "50名から300名までの貸切について、対応できる範囲と相談の流れをまとめています。",

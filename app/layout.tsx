@@ -22,13 +22,13 @@ const cormorant = Cormorant_Garamond({
 
 const PREVIEW_NOINDEX = process.env.NEXT_PUBLIC_NOINDEX === "true";
 
-const HOME_TITLE = "新宿のビアガーデン・屋上手ぶらBBQ";
+const HOME_TITLE = "新宿のビアガーデン｜屋上の手ぶらBBQ HOLIDAY SKY LOUNGE 新宿";
 
 export const metadata: Metadata = {
   // ドメインは siteConfig 経由。環境変数を変えるだけで全URLが切り替わる。
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${HOME_TITLE}｜${siteConfig.name}`,
+    default: HOME_TITLE,
     template: `%s｜${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -39,13 +39,13 @@ export const metadata: Metadata = {
     locale: siteConfig.locale,
     siteName: siteConfig.name,
     url: siteConfig.url,
-    title: `${HOME_TITLE}｜${siteConfig.name}`,
+    title: HOME_TITLE,
     description: siteConfig.description,
     images: [{ url: siteConfig.defaultOgImage, width: 1200, height: 630, alt: siteConfig.name }],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${HOME_TITLE}｜${siteConfig.name}`,
+    title: HOME_TITLE,
     description: siteConfig.description,
     images: [siteConfig.defaultOgImage],
   },

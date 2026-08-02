@@ -192,6 +192,11 @@ export default function GirlsPartyPage() {
       <RelatedLinks
         lead="コースやエリアからお探しの方はこちらもご覧ください。"
         items={[
+          {
+            href: "/",
+            label: "新宿のビアガーデン HOLIDAY SKY LOUNGE 新宿のトップページ",
+            description: "約300席の屋上テラス、手ぶらBBQのコース、アクセスまでをまとめて確認できます。",
+          },
           { href: "/course/samgyeopsal", label: "厚切りサムギョプサルのK-BBQコースを見る", description: "焼き方や付け合わせ、飲み放題の中身まで詳しく紹介しています。" },
           { href: "/area/shin-okubo", label: "新大久保から歩けるビアガーデンをお探しの方へ", description: "コリアンタウンからのアクセスと、散策後に立ち寄る使い方をまとめています。" },
           { href: "/food-drink", label: "カクテルやビールなど飲み放題の内容を見る", description: "生ビール4種類とボトルビール、カクテルまでの一覧です。" },

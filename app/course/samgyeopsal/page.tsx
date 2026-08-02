@@ -236,6 +236,11 @@ export default function SamgyeopsalPage() {
         lead="韓国BBQ以外のコースや、エリアからお探しの方はこちらもご覧ください。"
         items={[
           {
+            href: "/",
+            label: "新宿のビアガーデン HOLIDAY SKY LOUNGE 新宿のトップページ",
+            description: "約300席の屋上テラス、手ぶらBBQのコース、アクセスまでをまとめて確認できます。",
+          },
+          {
             href: "/course",
             label: "BBQコース4種類の料金と品数を比較する",
             description: "スタンダード・韓国・アメリカン・シュラスコの違いを一覧で確認できます。",

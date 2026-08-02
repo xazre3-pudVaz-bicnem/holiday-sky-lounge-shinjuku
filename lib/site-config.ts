@@ -32,7 +32,7 @@ export const siteConfig = {
   locale: "ja_JP",
   lang: "ja",
   description:
-    "新宿・東新宿の屋上ビアガーデン「HOLIDAY SKY LOUNGE 新宿」。約300席の開放的なテラスで、ブラックアンガス牛・サムギョプサル・シュラスコ・海鮮の手ぶらBBQと飲み放題を楽しめます。",
+    "新宿のビアガーデンなら、東新宿駅A1出口から徒歩2分の屋上「HOLIDAY SKY LOUNGE 新宿」。約300席の開放的なテラスで、ブラックアンガス牛・サムギョプサル・シュラスコの手ぶらBBQと飲み放題を。宴会・女子会・デート・貸切にも対応しています。",
   defaultOgImage: "/og-image.jpg",
 } as const;
 

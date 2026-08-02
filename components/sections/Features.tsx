@@ -14,11 +14,11 @@ export default function Features() {
         <SectionHeading
           en="Why HOLIDAY"
           className="max-w-3xl"
-          lead="新宿の屋上で手ぶらBBQビアガーデンを楽しめる、6つの理由。"
+          lead="約300席のオープンエアテラスと、手ぶらで始められるBBQ。ほかの店と何が違うのかを6つに整理しました。"
         >
-          約300席の開放的な
+          新宿のビアガーデンとして
           <br className="hidden sm:block" />
-          ルーフトップテラス
+          選ばれる6つの理由
         </SectionHeading>
       </div>
 

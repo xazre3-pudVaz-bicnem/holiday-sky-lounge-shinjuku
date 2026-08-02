@@ -62,6 +62,41 @@ export function restaurantJsonLd() {
       },
     ],
     hasMenu: absoluteUrl("/course"),
+    slogan: SHOP.catchCopy,
+    knowsAbout: ["ビアガーデン", "屋上ビアガーデン", "手ぶらBBQ", "バーベキュー", "シュラスコ", "サムギョプサル"],
+    areaServed: [
+      { "@type": "City", name: "新宿区" },
+      { "@type": "Place", name: "新宿" },
+      { "@type": "Place", name: "東新宿" },
+      { "@type": "Place", name: "新大久保" },
+      { "@type": "Place", name: "西武新宿" },
+    ],
+    // 掲載元で確認できる設備のみ
+    amenityFeature: [
+      { "@type": "LocationFeatureSpecification", name: "オープンテラス", value: true },
+      { "@type": "LocationFeatureSpecification", name: "ソファー席", value: true },
+      { "@type": "LocationFeatureSpecification", name: "カップルシート", value: true },
+      { "@type": "LocationFeatureSpecification", name: "個室", value: true },
+      { "@type": "LocationFeatureSpecification", name: "カラオケ", value: true },
+      { "@type": "LocationFeatureSpecification", name: "無料Wi-Fi", value: true },
+      { "@type": "LocationFeatureSpecification", name: "電源", value: true },
+      { "@type": "LocationFeatureSpecification", name: "英語メニュー", value: true },
+      { "@type": "LocationFeatureSpecification", name: "貸切対応", value: true },
+    ],
+    // コースを提供内容として明示する（価格は画面表示と一致させる）
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "BBQコース",
+      itemListElement: COURSES.map((c) => ({
+        "@type": "Offer",
+        name: c.name,
+        description: `全${c.dishes}品／${c.drinkMinutes / 60}時間飲み放題付`,
+        price: c.price,
+        priceCurrency: "JPY",
+        url: c.detailPath ? absoluteUrl(c.detailPath) : absoluteUrl("/course"),
+        availability: "https://schema.org/InStock",
+      })),
+    },
     sameAs: [LINKS.instagram, LINKS.reserve, LINKS.hotpepper, LINKS.gnavi],
   };
 }

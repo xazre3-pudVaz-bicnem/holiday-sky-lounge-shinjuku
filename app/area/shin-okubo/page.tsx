@@ -192,6 +192,11 @@ export default function ShinOkuboPage() {
       <RelatedLinks
         lead="コースやほかのエリアもあわせてご覧ください。"
         items={[
+          {
+            href: "/",
+            label: "新宿のビアガーデン HOLIDAY SKY LOUNGE 新宿のトップページ",
+            description: "約300席の屋上テラス、手ぶらBBQのコース、アクセスまでをまとめて確認できます。",
+          },
           { href: "/course/samgyeopsal", label: "厚切りサムギョプサルのK-BBQコースを見る", description: "焼き方や付け合わせ、飲み放題の中身まで詳しく紹介しています。" },
           { href: "/area/higashi-shinjuku", label: "東新宿駅A1出口から徒歩2分の立地について", description: "最短ルートと、仕事帰りや周辺オフィスからの使い方をまとめています。" },
           { href: "/scene/girls-party", label: "新宿の屋上テラスで女子会を開くなら", description: "写真の撮りやすい席や、時間帯の選び方を紹介しています。" },

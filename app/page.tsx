@@ -1,4 +1,5 @@
 import Hero from "@/components/sections/Hero";
+import BeerGardenSummary from "@/components/sections/BeerGardenSummary";
 import Concept from "@/components/sections/Concept";
 import Features from "@/components/sections/Features";
 import PurposeNav from "@/components/sections/PurposeNav";
@@ -35,6 +36,7 @@ export default function Home() {
         ]}
       />
       <Hero />
+      <BeerGardenSummary />
       <Concept />
       <PurposeNav />
       <Features />

@@ -228,6 +228,11 @@ export default function PrivatePartyPage() {
         lead="人数や目的が近いページもあわせてご覧ください。"
         items={[
           {
+            href: "/",
+            label: "新宿のビアガーデン HOLIDAY SKY LOUNGE 新宿のトップページ",
+            description: "約300席の屋上テラス、手ぶらBBQのコース、アクセスまでをまとめて確認できます。",
+          },
+          {
             href: "/scene/company-party",
             label: "新宿で大人数の会社宴会を開く幹事の方へ",
             description: "人数別の席の組み方と、予約前に決めておく6項目をまとめています。",

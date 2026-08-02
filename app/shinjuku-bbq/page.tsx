@@ -337,6 +337,11 @@ export default function ShinjukuBbqPage() {
         lead="BBQの内容をさらに詳しく知りたい方、目的が決まっている方はこちらもご覧ください。"
         items={[
           {
+            href: "/",
+            label: "新宿のビアガーデン HOLIDAY SKY LOUNGE 新宿のトップページ",
+            description: "約300席の屋上テラス、手ぶらBBQのコース、アクセスまでをまとめて確認できます。",
+          },
+          {
             href: "/course",
             label: `BBQコース${COURSES.length}種類の料金と品数を比較する`,
             description: "スタンダード・韓国・アメリカン・シュラスコの4コースと、ランチ限定・持ち込みプランの一覧です。",

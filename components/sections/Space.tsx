@@ -40,9 +40,9 @@ export default function Space() {
           className="max-w-3xl"
           lead="約300席のワンフロア。グリーンに囲まれたテラスは、時間帯によって表情がまるで変わります。"
         >
-          新宿の夜景を眺める、
+          夜景を眺める屋上ビアガーデンの
           <br className="hidden sm:block" />
-          天空のリゾートラウンジ。
+          テラスと座席
         </SectionHeading>
 
         {/* ---------- 昼と夜の対比 ---------- */}

@@ -195,6 +195,11 @@ export default function DatePage() {
       <RelatedLinks
         lead="空間や時間帯をもっと知りたい方はこちらもご覧ください。"
         items={[
+          {
+            href: "/",
+            label: "新宿のビアガーデン HOLIDAY SKY LOUNGE 新宿のトップページ",
+            description: "約300席の屋上テラス、手ぶらBBQのコース、アクセスまでをまとめて確認できます。",
+          },
           { href: "/space", label: "カップルシートとソファー席の様子を見る", description: "席のタイプごとの写真と、昼夜で変わる雰囲気を紹介しています。" },
           { href: "/guide/best-time-for-night-view", label: "夜景がいちばんきれいに見える時間帯", description: "日没から逆算して予約時間を決めるためのガイドです。" },
           { href: "/course", label: "BBQコース4種類の料金と品数を比較する", description: "二人で使うときの量と飲み放題の長さを比べられます。" },

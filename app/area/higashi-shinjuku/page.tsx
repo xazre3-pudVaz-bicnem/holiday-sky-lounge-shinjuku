@@ -196,6 +196,11 @@ export default function HigashiShinjukuPage() {
       <RelatedLinks
         lead="ほかのエリアや、目的別のページもあわせてご覧ください。"
         items={[
+          {
+            href: "/",
+            label: "新宿のビアガーデン HOLIDAY SKY LOUNGE 新宿のトップページ",
+            description: "約300席の屋上テラス、手ぶらBBQのコース、アクセスまでをまとめて確認できます。",
+          },
           { href: "/area/shin-okubo", label: "新大久保から歩けるビアガーデンをお探しの方へ", description: "コリアンタウンからのアクセスと、韓国BBQとの相性をまとめています。" },
           { href: "/access", label: "4駅それぞれからのアクセスと地図を見る", description: "西武新宿駅・新宿駅東口を含めたルートと、屋上までの上がり方を案内しています。" },
           { href: "/scene/company-party", label: "新宿で大人数の会社宴会を開く幹事の方へ", description: "人数別の席の組み方と、予約前に決めておく項目をまとめています。" },
